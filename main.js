@@ -3,50 +3,12 @@
 
   var mod = angular.module('App', []);
 
-  function getRandom(arr) {
-    return arr[Math.floor(Math.random() * arr.length)];
-  }
+  mod.controller('FontListController', function($scope, Fonts, Storage, util) {
 
-  function normalize(str) {
-    return str.replace(/['*-]/g, '');
-  }
-
-  function capitalize(str) {
-    return str[0].toUpperCase() + str.slice(1);
-  }
-
-  function alphanumericSort(a, b) {
-    var aNorm = normalize(a);
-    var bNorm = normalize(b);
-    if (aNorm < bNorm) {
-      return -1;
-    } else if (aNorm > bNorm) {
-      return 1;
-    }
-    return 0;
-  }
-
-  function getPostscriptFamilyName(font) {
-    var postscriptFamily = font.family.replace(/\s/g, '');
-    var postscriptFace = font.variant.replace(/[\s-]/g, '');
-    return postscriptFamily + (postscriptFace == 'Regular' ? '' : '-' + postscriptFace);
-  }
-
-  function setupStoredAttribute(scope, name, defaultValue) {
-    var json = typeof defaultValue == 'object';
-    var set = localStorage.getItem(name) || defaultValue;
-    scope[name] = json ? angular.fromJson(set) : set;
-    scope.$watch(name, function(set) {
-      localStorage.setItem(name, json ? angular.toJson(set) : set);
-    }, true);
-  }
-
-  mod.controller('FontListController', function($scope, $timeout, Fonts) {
-
-    setupStoredAttribute($scope, 'text', 'Hi there');
-    setupStoredAttribute($scope, 'side', 'top');
-    setupStoredAttribute($scope, 'theme', 'light');
-    setupStoredAttribute($scope, 'selected', []);
+    Storage.setupAttribute($scope, 'text', 'Hi there');
+    Storage.setupAttribute($scope, 'side', 'top');
+    Storage.setupAttribute($scope, 'theme', 'light');
+    Storage.setupAttribute($scope, 'selected', []);
 
     $scope.addFont = function(font) {
       $scope.selected.push(font);
@@ -62,69 +24,36 @@
       }
     }
 
-    $scope.getVariants = Fonts.getVariants;
-    $scope.queueWebFont = Fonts.queueWebFont;
-
-    $scope.getStyleForFont = function(font) {
-      if (Fonts.isGoogleFont(font)) {
-        return {
-          'font-family': font.family,
-          'font-weight': Fonts.getWeightForVariant(font.variant),
-          'font-style': Fonts.getStyleForVariant(font.variant)
-        };
-      } else {
-        return {
-          'font-family': getPostscriptFamilyName(font)
-        };
-      }
-    }
-
     $scope.getRandomFonts = function(limit) {
-      var arr = $scope.selected, i = 0;
+      var i = 0;
       while (i < limit) {
-        var family = getRandom(Fonts.all()).family;
-        var face = getRandom(Fonts.getVariants(family));
-        var exists = arr.some(function(f) {
-          return f.family == family && f.face == face;
-        });
+        var font = util.getRandom(Fonts.getAll());
+        var exists = $scope.selected.indexOf(font) !== -1;
         if (!exists) {
-          arr.push({
-            family: family,
-            face: face
-          });
+          $scope.selected.push(font);
           i++;
         }
       }
     };
 
     Fonts.load().then(function() {
-      $scope.fonts = $scope.fontSelect = Fonts.all();
-      $scope.fontsByScript = Fonts.byScript();
-      $scope.fontsByPlatform = Fonts.byPlatform();
+      $scope.fonts = Fonts.getAll();
     });
+
+    util.merge($scope, Fonts);
 
   });
 
   mod.service('Fonts', function($http, $q, util) {
 
     var GOOGLE_FONTS_API_URL = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyApru_pt7gpUGUzfvCkQj8RpS9jGGhkttQ'
-    var GOOGLE_FONTS_CSS_URL = 'http://fonts.googleapis.com/css?family='
-    //http://fonts.googleapis.com/css?family=Roboto:400,500italic,700|Open+Sans:600italic,700italic,400'
     var GOOGLE_FONTS_API_URL = 'fonts/google.json'
     var SYSTEM_FONTS_URL = 'fonts/system.json';
 
     var all = [];
     var queuedWebFonts = [];
-    var googleLoadedFonts = {};
-    var byFamily = {};
-    var byPlatform;
-    var byScript;
-
-    var googleVariantsByDisplayName = {};
 
     function transformSystemFont(font, variant) {
-      //font['platform'] = platform + (font['version'] ? ' ' + font['version'] : '');
-      //font['variants'] = font['variants'].split(/,\s+/).sort();
       return font;
     }
 
@@ -143,18 +72,7 @@
       return font;
     }
 
-    /*
-    function transformGoogleFontVariant(str) {
-      var display = str.replace(/(\d+)?([a-z]+)/i, function(m, num, style) {
-        return (num ? num + ' ' : '') + (style.charAt(0).toUpperCase() + style.slice(1));
-      });
-      googleVariantsByDisplayName[display] = str;
-      return display;
-    }
-   */
-
     function appendFonts(fontFamilies, transformFn) {
-      fontFamilies = fontFamilies.slice(0, 40);
       fontFamilies.forEach(function(family) {
         var variants = family.variants;
         if (typeof variants === 'string') {
@@ -165,7 +83,7 @@
             family: family.family,
             variant: variant
           });
-          font.name = family.family + ' ' + capitalize(font.variant),
+          font.name = family.family + ' ' + util.capitalize(font.variant),
           all.push(font);
         });
       });
@@ -185,55 +103,20 @@
 
     function sortAll() {
       all.sort(function(a, b) {
-        var result = alphanumericSort(a.family, b.family);
+        var result = util.alphanumericSort(a.family, b.family);
         if (result === 0) {
           if (a.variant.length !== b.variant.length) {
             result = a.variant.length - b.variant.length;
           } else {
-            result = alphanumericSort(a.variant, b.variant);
+            result = util.alphanumericSort(a.variant, b.variant);
           }
         }
         return result;
       });
     }
 
-    function getGroup(field, fallbackText) {
-      var result = {}, grouped = [];
-      all.forEach(function(font) {
-        var label = font[field] || fallbackText;
-        var group = result[label];
-        if (!group) {
-          group = result[label] = [];
-        }
-        group.push(font);
-      });
-      return result;
-    }
-
-    function groupAll() {
-      byPlatform = getGroup('platform', 'None');
-      byScript = getGroup('script', 'Multiple');
-    }
-
     function isGoogleFont(font) {
       return font.platform == 'Google Fonts';
-    }
-
-    function updateGoogleLoadUrl() {
-      var families = [];
-      for (var f in googleLoadedFonts) {
-        if(!googleLoadedFonts.hasOwnProperty(f)) continue;
-        var family = googleLoadedFonts[f];
-        var variants = [];
-        for (var v in family) {
-          if(!family.hasOwnProperty(v)) continue;
-          variants.push(v);
-        };
-        families.push(f.replace(/\s/g, '+') + ':' + variants.join(','));
-      };
-      if (families.length) {
-        googleLoadUrl = GOOGLE_FONTS_CSS_URL + families.join('|');
-      }
     }
 
     function loadWebFonts() {
@@ -246,22 +129,44 @@
       });
     }
 
-    var deferredLoadWebFonts = util.debounce(loadWebFonts, 500);
-
-    this.isGoogleFont = isGoogleFont;
-
-    this.getWeightForVariant = function(variant) {
+    function getWeightForVariant(variant) {
       var match = variant.match(/\d+/);
       return match ? match[0] : null;
     }
 
-    this.getStyleForVariant = function(variant) {
+    function getStyleForVariant(variant) {
       var match = variant.match(/italic/i);
       return match ? 'italic' : null;
     }
 
+    function getPostscriptFamilyName(font) {
+      var postscriptFamily = font.family.replace(/\s/g, '');
+      var postscriptFace = font.variant.replace(/[\s-]/g, '');
+      return postscriptFamily + (postscriptFace == 'Regular' ? '' : '-' + postscriptFace);
+    }
+
+    var deferredLoadWebFonts = util.debounce(loadWebFonts, 200);
+
+    this.getStyleForFont = function(font) {
+      if (isGoogleFont(font)) {
+        return {
+          'font-family': font.family,
+          'font-weight': getWeightForVariant(font.variant),
+          'font-style': getStyleForVariant(font.variant)
+        };
+      } else {
+        return {
+          'font-family': getPostscriptFamilyName(font)
+        };
+      }
+    }
+
+    this.getAll = function() {
+      return all;
+    }
+
     this.load = function() {
-      return $q.all([loadSystemFonts(), loadGoogleFonts()]).then(sortAll).then(groupAll);
+      return $q.all([loadSystemFonts(), loadGoogleFonts()]).then(sortAll);
     }
 
     this.queueWebFont = function(font) {
@@ -271,47 +176,49 @@
       }
     }
 
-    this.getVariants = function(family) {
-      return byFamily[family].variants;
-    }
-
-    this.all = function() {
-      return all;
-    }
-
-    this.byPlatform = function() {
-      return byPlatform;
-    }
-
-    this.byScript = function() {
-      return byScript;
-    }
-
   });
 
-  mod.directive('fontResize', function($window) {
+  mod.service('Storage', function() {
 
-    return {
-      restrict: 'A',
-      scope: {
-        change: '=fontResize'
-      },
-      link: function(scope, element) {
-
-        scope.$watch('change', handleResize, true);
-
-        function handleResize() {
-          angular.forEach(element.children(), function(el) {
-          });
-        }
-
-        handleResize();
-        angular.element($window).on('resize', handleResize);
-      }
+    this.setupAttribute = function(scope, name, defaultValue) {
+      var json = typeof defaultValue == 'object';
+      var set = localStorage.getItem(name) || defaultValue;
+      scope[name] = json ? angular.fromJson(set) : set;
+      scope.$watch(name, function(set) {
+        localStorage.setItem(name, json ? angular.toJson(set) : set);
+      }, true);
     }
+
   });
 
   mod.service('util', function($timeout) {
+
+    function normalize(str) {
+      return str.replace(/['*-]/g, '');
+    }
+
+    this.getRandom = function(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    this.capitalize = function(str) {
+      return str[0].toUpperCase() + str.slice(1);
+    }
+
+    this.nlbr = function(str) {
+      return str.replace(/\n/, '<br>');
+    }
+
+    this.alphanumericSort = function(a, b) {
+      var aNorm = normalize(a);
+      var bNorm = normalize(b);
+      if (aNorm < bNorm) {
+        return -1;
+      } else if (aNorm > bNorm) {
+        return 1;
+      }
+      return 0;
+    }
 
     this.debounce = function(srcFn, ms) {
       var promise;
@@ -331,6 +238,14 @@
       }
       return fn;
     }
+
+    this.merge = function(target, src) {
+      for (var key in src) {
+        if(!src.hasOwnProperty(key)) continue;
+        target[key] = src[key];
+      };
+    }
+
   });
 
   mod.filter('userFilter', function() {
@@ -339,14 +254,12 @@
     }
   });
 
-  mod.filter('capitalize', function() {
-    return capitalize;
+  mod.filter('capitalize', function(util) {
+    return util.capitalize;
   });
 
-  mod.filter('nlbr', function() {
-    return function (str) {
-      return str.replace(/\n/, '<br>');
-    }
+  mod.filter('nlbr', function(util) {
+    return util.nlbr;
   });
 
   mod.directive('onScrollPast', function($window, util) {

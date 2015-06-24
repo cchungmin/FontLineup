@@ -241,6 +241,7 @@ header .icon {
 /* -------------------------] Font List [------------------------*/
 
 .font-list {
+  position: relative;
   text-align: left;
   overflow-x: hidden;
   overflow-y: auto;

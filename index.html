@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Font Lineup</title>
     <link rel="stylesheet" href="main.css">
-    <!--<link ng-href="{{googleFontsLoadUrl}}" rel="stylesheet" type="text/css" ng-if="googleFontsLoadUrl">-->
   </head>
   <body ng-cloak ng-class="{dark: theme == 'dark'}" class="flex-layout">
     <header class="flex-gutter">
@@ -25,6 +24,14 @@
              on-scroll-past="queueWebFont(font)"
              ng-click="addFont(font)">
           <h6 class="font-name" ng-style="getStyleForFont(font)">{{font.name}}</h6>
+        </div>
+      </fieldset>
+      <fieldset>
+        <div ng-click="getRandomFonts(10)">
+          Random
+        </div>
+        <div ng-click="removeAllFonts()">
+          Remove All
         </div>
       </fieldset>
       <fieldset class="clickable" ng-click="theme = theme == 'dark' ? 'light' : 'dark'">
