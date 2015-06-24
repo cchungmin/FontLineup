@@ -1,0 +1,1424 @@
+[
+  {
+    "family": "Abadi MT Condensed Light",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "98"
+  },
+  {
+    "family": "Aharoni",
+    "variants": "Bold",
+    "script": "Hebrew",
+    "version": ""
+  },
+  {
+    "family": "Al Bayan",
+    "variants": "Regular, Bold",
+    "script": "Arabic"
+  },
+  {
+    "family": "Aldhabi",
+    "variants": "Regular",
+    "script": "Arabic",
+    "version": "8"
+  },
+  {
+    "family": "American Typewriter",
+    "variants": "Condensed Light, Condensed, Condensed Bold, Light, Regular, Bold",
+    "script": ""
+  },
+  {
+    "family": "Andale Mono",
+    "variants": "Regular",
+    "script": ""
+  },
+  {
+    "family": "Andalus",
+    "variants": "Regular",
+    "script": "Arabic",
+    "version": ""
+  },
+  {
+    "family": "Angsana New",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "AngsanaUPC",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "Aparajita",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Devanagari",
+    "version": "7"
+  },
+  {
+    "family": "Apple Chancery",
+    "variants": "Regular",
+    "script": ""
+  },
+  {
+    "family": "Apple Gothic",
+    "variants": "Regular",
+    "script": "Korean"
+  },
+  {
+    "family": "Apple LiGothic",
+    "variants": "Medium",
+    "script": "Traditional Chinese"
+  },
+  {
+    "family": "Apple LiSung",
+    "variants": "Light",
+    "script": "Traditional Chinese"
+  },
+  {
+    "family": "Apple Myungjo",
+    "variants": "Regular",
+    "script": "Korean"
+  },
+  {
+    "family": "Apple Symbols",
+    "variants": "Regular",
+    "script": ""
+  },
+  {
+    "family": "AquaKana",
+    "variants": "Regular"
+  },
+  {
+    "family": "Arabic Typesetting",
+    "variants": "Regular",
+    "script": "Arabic",
+    "version": ""
+  },
+  {
+    "family": "Arial",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin, Greek, Cyrillic, Arabic, Hebrew",
+    "install_ver_windows": "3.1",
+    "install_base_windows": 99.84,
+    "install_base_mac": 98.74
+  },
+  {
+    "family": "Arial Black",
+    "variants": "Regular",
+    "script": "Latin, Cyrillic",
+    "install_base_windows": 98.08,
+    "install_base_mac": 96.22
+  },
+  {
+    "family": "Arial Narrow",
+    "variants": "Regular, Italic, Bold, Bold Italic",
+    "script": "Latin, Cyrillic",
+    "install_base_windows": 88.39,
+    "install_base_mac": 94.77
+  },
+  {
+    "family": "Arial Rounded MT Bold",
+    "variants": "Regular",
+    "script": "Latin",
+    "install_base_windows": 59.53,
+    "install_base_mac": 95.14
+  },
+  {
+    "family": "Ayuthaya",
+    "variants": "Regular",
+    "script": "Thai"
+  },
+  {
+    "family": "Baghdad",
+    "variants": "Regular",
+    "script": "Arabic"
+  },
+  {
+    "family": "Baskerville",
+    "variants": "Regular, Italic, Semi-bold, Semi-bold Italic, Bold, Bold Italic",
+    "script": ""
+  },
+  {
+    "family": "Batang",
+    "variants": "Regular",
+    "script": "Korean",
+    "version": "XP"
+  },
+  {
+    "family": "BatangChe",
+    "variants": "Regular",
+    "script": "Korean",
+    "version": ""
+  },
+  {
+    "family": "BiauKai",
+    "variants": "Regular",
+    "script": "Traditional Chinese"
+  },
+  {
+    "family": "Big Caslon",
+    "variants": "Medium",
+    "script": ""
+  },
+  {
+    "family": "Book Antiqua",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "98"
+  },
+  {
+    "family": "Browallia New",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "BrowalliaUPC",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "Brush Script",
+    "variants": "Italic",
+    "script": ""
+  },
+  {
+    "family": "Calibri",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin",
+    "install_ver_windows": "Vista",
+    "install_base_windows": 83.41,
+    "install_base_mac": 38.74
+  },
+  {
+    "family": "Calibri Light",
+    "variants": "Regular, Italic",
+    "script": "Latin/Greek/Cyrillic, Vietnamese",
+    "version": "8.0"
+  },
+  {
+    "family": "Calisto MT",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "98"
+  },
+  {
+    "family": "Cambria",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "Vista"
+  },
+  {
+    "family": "Cambria Math",
+    "variants": "Regular",
+    "script": "Math",
+    "version": "Vista"
+  },
+  {
+    "family": "Candara",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "Vista"
+  },
+  {
+    "family": "Century Gothic",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "98"
+  },
+  {
+    "family": "Chalkboard",
+    "variants": "Regular, Bold"
+  },
+  {
+    "family": "Chalkduster",
+    "variants": "Regular",
+    "version": "10.6"
+  },
+  {
+    "family": "Charcoal",
+    "variants": "Regular",
+    "script": "Classic only"
+  },
+  {
+    "family": "Charcoal CY",
+    "variants": "Regular",
+    "script": "Cyrillic"
+  },
+  {
+    "family": "Chicago",
+    "variants": "Regular",
+    "script": "Classic only, see Krungthep below"
+  },
+  {
+    "family": "Cochin",
+    "variants": "Regular, Italic, Bold, Bold Italic",
+    "script": ""
+  },
+  {
+    "family": "Comic Sans",
+    "variants": "Regular, Bold",
+    "script": "Bundled with Windows"
+  },
+  {
+    "family": "Comic Sans MS",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "95"
+  },
+  {
+    "family": "Consolas",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "Vista"
+  },
+  {
+    "family": "Constantia",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "Vista"
+  },
+  {
+    "family": "Cooper",
+    "variants": "Black",
+    "script": ""
+  },
+  {
+    "family": "Copperplate",
+    "variants": "Light, Regular, Bold",
+    "script": ""
+  },
+  {
+    "family": "Copperplate Gothic Bold",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "98"
+  },
+  {
+    "family": "Copperplate Gothic Light",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "98"
+  },
+  {
+    "family": "Corbel",
+    "variants": "Regular, Italic, Bold, Bold Italic",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "Vista"
+  },
+  {
+    "family": "Cordia New",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "CordiaUPC",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "Corsiva Hebrew",
+    "variants": "Regular, Bold",
+    "script": "Hebrew"
+  },
+  {
+    "family": "Courier",
+    "variants": "Regular, Oblique, Bold, Bold Oblique",
+    "script": ""
+  },
+  {
+    "family": "Courier New",
+    "variants": "Regular, Italic, Bold, Bold Italic",
+    "script": "Bundled with Windows"
+  },
+  {
+    "family": "Courier New",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic, Arabic, Hebrew",
+    "version": "3.1"
+  },
+  {
+    "family": "DFKai-SB",
+    "variants": "Regular",
+    "script": "Traditional Chinese",
+    "version": ""
+  },
+  {
+    "family": "DaunPenh",
+    "variants": "Regular",
+    "script": "Khmer",
+    "version": "Vista"
+  },
+  {
+    "family": "David",
+    "variants": "Regular, Bold",
+    "script": "Hebrew",
+    "version": ""
+  },
+  {
+    "family": "DecoType Naskh",
+    "variants": "Regular",
+    "script": "Naskh Arabic"
+  },
+  {
+    "family": "Devanagari",
+    "variants": "Regular, Bold",
+    "script": "Devanagari"
+  },
+  {
+    "family": "Didot",
+    "variants": "Regular, Italic, Bold",
+    "script": ""
+  },
+  {
+    "family": "DilleniaUPC",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "DokChampa",
+    "variants": "Regular",
+    "script": "Lao, Thai",
+    "version": ""
+  },
+  {
+    "family": "Dotum",
+    "variants": "Regular",
+    "script": "Korean",
+    "version": ""
+  },
+  {
+    "family": "DotumChe",
+    "variants": "Regular",
+    "script": "Korean",
+    "version": ""
+  },
+  {
+    "family": "Ebrima",
+    "variants": "Regular, Bold",
+    "script": "N'Ko, Tifinagh, Vai",
+    "version": "7"
+  },
+  {
+    "family": "Estrangelo Edessa",
+    "variants": "Regular",
+    "script": "Syriac",
+    "version": ""
+  },
+  {
+    "family": "EucrosiaUPC",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "Euphemia",
+    "variants": "Regular",
+    "script": "Unified Canadian Syllabics",
+    "version": ""
+  },
+  {
+    "family": "Euphemia UCAS",
+    "variants": "Regular, Italic, Bold",
+    "script": "Canadian Syllabics"
+  },
+  {
+    "family": "Fang Song",
+    "variants": "Regular",
+    "script": "Simplified Chinese"
+  },
+  {
+    "family": "FangSong",
+    "variants": "Monospaced",
+    "script": "Simplified Chinese",
+    "version": ""
+  },
+  {
+    "family": "FrankRuehl",
+    "variants": "Regular",
+    "script": "Hebrew",
+    "version": ""
+  },
+  {
+    "family": "Franklin Gothic Medium",
+    "variants": "Regular, Italic",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "7"
+  },
+  {
+    "family": "FreesiaUPC",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "Futura",
+    "variants": "Condensed Medium, Condensed Extra Bold, Medium, Medium Italic",
+    "script": ""
+  },
+  {
+    "family": "Gabriola",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "7"
+  },
+  {
+    "family": "Gadget",
+    "variants": "Regular",
+    "script": "Classic only"
+  },
+  {
+    "family": "Gadugi",
+    "variants": "Regular, Bold",
+    "script": "Cherokee, Unified Canadian Aboriginal Syllabics",
+    "version": "8"
+  },
+  {
+    "family": "Gautami",
+    "variants": "Regular, Bold",
+    "script": "Telugu",
+    "version": "XP"
+  },
+  {
+    "family": "Geeza Pro",
+    "variants": "Regular, Bold",
+    "script": "Arabic"
+  },
+  {
+    "family": "Geezah",
+    "variants": "Regular",
+    "script": "Arabic"
+  },
+  {
+    "family": "Geneva",
+    "variants": "Regular",
+    "script": ""
+  },
+  {
+    "family": "Geneva CY",
+    "variants": "Regular",
+    "script": "Cyrillic"
+  },
+  {
+    "family": "Georgia",
+    "variants": "Regular, Italic, Bold, Bold Italic",
+    "script": "Bundled with Windows"
+  },
+  {
+    "family": "Georgia",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "2000"
+  },
+  {
+    "family": "Gill Sans",
+    "variants": "Light, Light Italic, Regular, Italic, Bold, Bold Italic",
+    "script": ""
+  },
+  {
+    "family": "Gisha",
+    "variants": "Regular, Bold",
+    "script": "Hebrew",
+    "version": ""
+  },
+  {
+    "family": "Gujarati",
+    "variants": "Regular, Bold",
+    "script": "Gujarati"
+  },
+  {
+    "family": "Gulim",
+    "variants": "Regular",
+    "script": "Korean",
+    "version": ""
+  },
+  {
+    "family": "GulimChe",
+    "variants": "Regular",
+    "script": "Korean",
+    "version": ""
+  },
+  {
+    "family": "Gung Seoche",
+    "variants": "Regular",
+    "script": "Korean, named \"#GungSeo\" in font list"
+  },
+  {
+    "family": "Gungsuh",
+    "variants": "Regular",
+    "script": "Korean",
+    "version": ""
+  },
+  {
+    "family": "GungsuhChe",
+    "variants": "Regular",
+    "script": "Korean",
+    "version": ""
+  },
+  {
+    "family": "Gurmukhi",
+    "variants": "Regular",
+    "script": "Gurmukhi"
+  },
+  {
+    "family": "Hangangche",
+    "variants": "Regular",
+    "script": "Korean"
+  },
+  {
+    "family": "HeadlineA",
+    "variants": "Regular",
+    "script": "Korean, named \"#HeadLineA\" in font list"
+  },
+  {
+    "family": "Hei",
+    "variants": "Regular",
+    "script": "Simplified Chinese"
+  },
+  {
+    "family": "Helvetica",
+    "variants": "Regular, Oblique, Bold, Bold Oblique",
+    "script": "System Font for Small Text"
+  },
+  {
+    "family": "Helvetica CY",
+    "variants": "Regular, Oblique, Bold, Bold Oblique",
+    "script": "Cyrillic; Face is condensed compared to Helvetica, Helvetica Neue"
+  },
+  {
+    "family": "Helvetica Neue",
+    "variants": "Condensed Bold, Condensed Black, Ultra-light, Ultra-light Italic, Light, Light Italic, Regular, Italic, Bold, Bold Italic",
+    "script": ""
+  },
+  {
+    "family": "Herculanum",
+    "variants": "Regular",
+    "script": ""
+  },
+  {
+    "family": "Hiragino Kaku Gothic Pro",
+    "variants": "W3, W6",
+    "script": "Japanese"
+  },
+  {
+    "family": "Hiragino Kaku Gothic ProN",
+    "variants": "W3, W6",
+    "script": "Japanese"
+  },
+  {
+    "family": "Hiragino Kaku Gothic Std",
+    "variants": "W8",
+    "script": "Japanese"
+  },
+  {
+    "family": "Hiragino Kaku Gothic StdN",
+    "variants": "W8",
+    "script": "Japanese"
+  },
+  {
+    "family": "Hiragino Maru Gothic Pro",
+    "variants": "W4",
+    "script": "Japanese"
+  },
+  {
+    "family": "Hiragino Maru Gothic ProN",
+    "variants": "W4",
+    "script": "Japanese"
+  },
+  {
+    "family": "Hiragino Mincho Pro",
+    "variants": "W3, W6",
+    "script": "Japanese"
+  },
+  {
+    "family": "Hiragino Mincho ProN",
+    "variants": "W3, W6",
+    "script": "Japanese"
+  },
+  {
+    "family": "Hoefler Text",
+    "variants": "Regular, Italic, Black, Black Italic, Ornaments"
+  },
+  {
+    "family": "Impact",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "98"
+  },
+  {
+    "family": "Impact",
+    "variants": "Regular",
+    "script": "Bundled with Windows"
+  },
+  {
+    "family": "Inai Mathi",
+    "variants": "Regular",
+    "version": "10.4",
+    "script": "Tamil"
+  },
+  {
+    "family": "IrisUPC",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "Iskoola Pota",
+    "variants": "Regular, Bold",
+    "script": "Sinhala",
+    "version": ""
+  },
+  {
+    "family": "JasmineUPC",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "Jung Gothic",
+    "variants": "Medium",
+    "script": "Korean"
+  },
+  {
+    "family": "Kai",
+    "variants": "Regular",
+    "script": "Simplified Chinese"
+  },
+  {
+    "family": "KaiTi",
+    "variants": "Regular",
+    "script": "Simplified Chinese",
+    "version": "7"
+  },
+  {
+    "family": "Kalinga",
+    "variants": "Regular, Bold",
+    "script": "Oriya",
+    "version": ""
+  },
+  {
+    "family": "Kartika",
+    "variants": "Regular, Bold",
+    "script": "Malayalam",
+    "version": ""
+  },
+  {
+    "family": "Keyboard",
+    "variants": "Regular"
+  },
+  {
+    "family": "Khmer UI",
+    "variants": "Regular, Bold",
+    "script": "Khmer",
+    "version": ""
+  },
+  {
+    "family": "KodchiangUPC",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "Kokila",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Devanagari",
+    "version": "7"
+  },
+  {
+    "family": "Krungthep",
+    "variants": "Regular",
+    "script": "Thai"
+  },
+  {
+    "family": "KufiStandard GK",
+    "variants": "Regular",
+    "script": "Arabic"
+  },
+  {
+    "family": "Lao UI",
+    "variants": "Regular, Bold",
+    "script": "Lao",
+    "version": "7"
+  },
+  {
+    "family": "LastResort",
+    "variants": "Regular"
+  },
+  {
+    "family": "Latha",
+    "variants": "Regular, Bold",
+    "script": "Tamil",
+    "version": "XP"
+  },
+  {
+    "family": "Leelawadee",
+    "variants": "Regular, Bold",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "Levenim MT",
+    "variants": "Regular, Bold",
+    "script": "Hebrew",
+    "version": ""
+  },
+  {
+    "family": "LiHei Pro",
+    "variants": "Medium",
+    "script": "Traditional Chinese"
+  },
+  {
+    "family": "LiSong Pro",
+    "variants": "Light",
+    "script": ""
+  },
+  {
+    "family": "LilyUPC",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Thai",
+    "version": ""
+  },
+  {
+    "family": "Lucida Console",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "98"
+  },
+  {
+    "family": "Lucida Grande",
+    "variants": "Regular, Bold",
+    "script": "Main System Font in Mac OS X"
+  },
+  {
+    "family": "Lucida Handwriting Italic",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "98"
+  },
+  {
+    "family": "Lucida Sans Unicode",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic, Hebrew",
+    "version": "98"
+  },
+  {
+    "family": "MS Gothic, MS PGothic",
+    "variants": "Monospaced, Proportional",
+    "script": "Japanese",
+    "version": ""
+  },
+  {
+    "family": "MS Mincho, MS PMincho",
+    "variants": "Monospaced, Proportional",
+    "script": "Japanese",
+    "version": ""
+  },
+  {
+    "family": "MS UI Gothic",
+    "variants": "Proportional",
+    "script": "Japanese",
+    "version": ""
+  },
+  {
+    "family": "MV Boli",
+    "variants": "Regular",
+    "script": "Thaana",
+    "version": ""
+  },
+  {
+    "family": "Malgun Gothic",
+    "variants": "Regular, Bold",
+    "script": "Korean (no Hanja)",
+    "version": "Vista"
+  },
+  {
+    "family": "Mangal",
+    "variants": "Regular, Bold",
+    "script": "Devanagari",
+    "version": ""
+  },
+  {
+    "family": "Marker Felt",
+    "variants": "Thin, Wide",
+    "script": ""
+  },
+  {
+    "family": "Marlett",
+    "variants": "Regular",
+    "script": "Windows Interface",
+    "version": "95"
+  },
+  {
+    "family": "Meiryo",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Japanese",
+    "version": "Vista"
+  },
+  {
+    "family": "Meiryo UI",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Japanese",
+    "version": "7"
+  },
+  {
+    "family": "Menlo",
+    "variants": "Regular, Bold, Italic",
+    "script": ""
+  },
+  {
+    "family": "Microsoft Himalaya",
+    "variants": "Regular",
+    "script": "Tibetan",
+    "version": "Vista"
+  },
+  {
+    "family": "Microsoft JhengHei",
+    "variants": "Regular, Bold",
+    "script": "Traditional Chinese",
+    "version": "Vista"
+  },
+  {
+    "family": "Microsoft JhengHei UI",
+    "variants": "Regular, Bold",
+    "script": "Traditional Chinese",
+    "version": "8"
+  },
+  {
+    "family": "Microsoft New Tai Lue",
+    "variants": "Regular, Bold",
+    "script": "New Tai Lue",
+    "version": "7"
+  },
+  {
+    "family": "Microsoft PhagsPa",
+    "variants": "Regular, Bold",
+    "script": "'Phags-pa",
+    "version": "7"
+  },
+  {
+    "family": "Microsoft Sans Serif",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic, Arabic, Hebrew, Thai",
+    "version": ""
+  },
+  {
+    "family": "Microsoft Tai Le",
+    "variants": "Regular, Bold",
+    "script": "Tai NÃ¼a",
+    "version": "7"
+  },
+  {
+    "family": "Microsoft Uighur",
+    "variants": "Regular, Bold",
+    "script": "Uighur",
+    "version": ""
+  },
+  {
+    "family": "Microsoft YaHei",
+    "variants": "Regular, Bold",
+    "script": "Simplified Chinese",
+    "version": "Vista"
+  },
+  {
+    "family": "Microsoft YaHei UI",
+    "variants": "Regular, Bold",
+    "script": "Simplified Chinese",
+    "version": "8"
+  },
+  {
+    "family": "Microsoft Yi Baiti",
+    "variants": "Regular",
+    "script": "Yi",
+    "version": ""
+  },
+  {
+    "family": "MingLiU, PMingLiU",
+    "variants": "Monospaced, Proportional",
+    "script": "Traditional Chinese",
+    "version": ""
+  },
+  {
+    "family": "MingLiU-ExtB, PMingLiU-ExtB",
+    "variants": "Monospaced, Proportional",
+    "script": "Traditional Chinese",
+    "version": ""
+  },
+  {
+    "family": "MingLiU_HKSCS",
+    "variants": "Monospaced",
+    "script": "Cantonese",
+    "version": ""
+  },
+  {
+    "family": "MingLiU_HKSCS-ExtB",
+    "variants": "Monospaced",
+    "script": "Cantonese",
+    "version": ""
+  },
+  {
+    "family": "Miriam",
+    "variants": "Monospaced, Proportional",
+    "script": "Hebrew",
+    "version": ""
+  },
+  {
+    "family": "Monaco",
+    "variants": "Regular",
+    "script": ""
+  },
+  {
+    "family": "Monaco CY",
+    "variants": "Regular",
+    "script": "Cyrillic"
+  },
+  {
+    "family": "Mongolian Baiti",
+    "variants": "Regular",
+    "script": "Mongolian",
+    "version": "Vista"
+  },
+  {
+    "family": "MoolBoran",
+    "variants": "Regular",
+    "script": "Khmer",
+    "version": ""
+  },
+  {
+    "family": "Mshtakan",
+    "variants": "Regular, Oblique, Bold, Bold Oblique",
+    "version": "10.3",
+    "script": "Armenian"
+  },
+  {
+    "family": "Myanmar Text",
+    "variants": "Regular",
+    "script": "Myanmar",
+    "version": "8"
+  },
+  {
+    "family": "NSimSun",
+    "variants": "Monospaced",
+    "script": "Simplified Chinese",
+    "version": ""
+  },
+  {
+    "family": "Nadeem",
+    "variants": "Regular",
+    "script": "Arabic"
+  },
+  {
+    "family": "Narkisim",
+    "variants": "Regular",
+    "script": "Hebrew",
+    "version": ""
+  },
+  {
+    "family": "New Peninim",
+    "variants": "Regular, Inclined, Bold, Bold Inclined",
+    "script": "Hebrew"
+  },
+  {
+    "family": "New York",
+    "variants": "Regular",
+    "script": "Classic only"
+  },
+  {
+    "family": "News Gothic MT",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "98"
+  },
+  {
+    "family": "Nirmala UI",
+    "variants": "Regular, Bold",
+    "script": "Devanagari, Bengali, Gurmukhi, Gujarati, Oriya, Tamil, Telugu, Kannada, Malayalam, Sinhala",
+    "version": "8"
+  },
+  {
+    "family": "Nyala",
+    "variants": "Regular",
+    "script": "Ethiopic",
+    "version": ""
+  },
+  {
+    "family": "Optima",
+    "variants": "Regular, Italic, Bold, Bold Italic, Extra Black",
+    "script": ""
+  },
+  {
+    "family": "Osaka",
+    "variants": "Regular, Monospace",
+    "script": "Japanese"
+  },
+  {
+    "family": "PC Myungjo",
+    "variants": "Regular",
+    "script": "Korean, named \"#PCMyungjo\" in font list"
+  },
+  {
+    "family": "Palatino",
+    "variants": "Regular, Italic, Bold, Bold Italic",
+    "script": "Classic or iLife"
+  },
+  {
+    "family": "Palatino Linotype",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "2000"
+  },
+  {
+    "family": "Papyrus",
+    "variants": "Regular",
+    "script": ""
+  },
+  {
+    "family": "Pilgiche",
+    "variants": "Regular",
+    "script": "Korean, named \"#PilGi\" in font list"
+  },
+  {
+    "family": "Plantagenet Cherokee",
+    "variants": "Regular",
+    "script": "Cherokee"
+  },
+  {
+    "family": "Plantagenet Cherokee",
+    "variants": "Regular",
+    "script": "Cherokee",
+    "version": ""
+  },
+  {
+    "family": "Raanana",
+    "variants": "Regular, Bold",
+    "script": "Hebrew"
+  },
+  {
+    "family": "Raavi",
+    "variants": "Regular, Bold",
+    "script": "Gurmukhi",
+    "version": "XP"
+  },
+  {
+    "family": "Rod",
+    "variants": "Regular",
+    "script": "Hebrew",
+    "version": ""
+  },
+  {
+    "family": "ST FangSong",
+    "variants": "Regular",
+    "script": "Simplified Chinese"
+  },
+  {
+    "family": "ST Heiti",
+    "variants": "Light, Regular",
+    "script": "Simplified Chinese"
+  },
+  {
+    "family": "ST Kaiti",
+    "variants": "Regular",
+    "script": "Simplified Chinese"
+  },
+  {
+    "family": "ST Song",
+    "variants": "Regular",
+    "script": "Simplified Chinese"
+  },
+  {
+    "family": "Sakkal Majalla",
+    "variants": "Regular, Bold",
+    "script": "Arabic",
+    "version": "7"
+  },
+  {
+    "family": "Sand",
+    "variants": "Regular",
+    "script": ""
+  },
+  {
+    "family": "Sathu",
+    "variants": "Regular",
+    "script": "Thai"
+  },
+  {
+    "family": "Segoe Print",
+    "variants": "Regular, Bold",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "Vista"
+  },
+  {
+    "family": "Segoe Script",
+    "variants": "Regular, Bold",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "Vista"
+  },
+  {
+    "family": "Segoe UI Historic[6]",
+    "variants": "Regular",
+    "script": "Historic scripts",
+    "version": "10"
+  },
+  {
+    "family": "Segoe UI Symbol",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "7"
+  },
+  {
+    "family": "Segoe UI v5.00[3]",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic, Arabic",
+    "version": "Vista"
+  },
+  {
+    "family": "Segoe UI v5.01[4]",
+    "variants": "Light, Semibold, plus previous faces",
+    "script": "Latin/Greek/Cyrillic, Arabic",
+    "version": "7"
+  },
+  {
+    "family": "Segoe UI v5.27[5]",
+    "variants": "Light Italic, Semibold Italic, Semilight, Semilight Italic plus previous faces",
+    "script": "Latin/Greek/Cyrillic, Arabic",
+    "version": "8"
+  },
+  {
+    "family": "Seoul",
+    "variants": "Regular",
+    "script": "Korean"
+  },
+  {
+    "family": "Shin Myungjo Neue",
+    "variants": "Regular",
+    "script": "Korean"
+  },
+  {
+    "family": "Shonar Bangla",
+    "variants": "Regular, Bold",
+    "script": "Bengali",
+    "version": "7"
+  },
+  {
+    "family": "Shruti",
+    "variants": "Regular, Bold",
+    "script": "Gujarati",
+    "version": "XP"
+  },
+  {
+    "family": "Silom",
+    "variants": "Regular",
+    "script": "Thai"
+  },
+  {
+    "family": "SimHei",
+    "variants": "Monospaced",
+    "script": "Simplified Chinese",
+    "version": ""
+  },
+  {
+    "family": "SimKai",
+    "variants": "Monospaced",
+    "script": "Simplified Chinese",
+    "version": ""
+  },
+  {
+    "family": "SimSun",
+    "variants": "Proportional",
+    "script": "Simplified Chinese",
+    "version": ""
+  },
+  {
+    "family": "SimSun-ExtB",
+    "variants": "Monospaced",
+    "script": "Simplified Chinese",
+    "version": ""
+  },
+  {
+    "family": "Simplified Arabic",
+    "variants": "Regular, Bold, Monospaced",
+    "script": "Arabic",
+    "version": ""
+  },
+  {
+    "family": "Skia",
+    "variants": "Regular",
+    "script": ""
+  },
+  {
+    "family": "Song",
+    "variants": "Regular",
+    "script": "Simplified Chinese"
+  },
+  {
+    "family": "Sylfaen",
+    "variants": "Regular",
+    "script": "Armenian, Georgian",
+    "version": ""
+  },
+  {
+    "family": "Symbol",
+    "variants": "Regular",
+    "script": ""
+  },
+  {
+    "family": "Symbol",
+    "variants": "Regular",
+    "script": "",
+    "version": "3.1"
+  },
+  {
+    "family": "Tae Graphic",
+    "variants": "Regular",
+    "script": "Korean"
+  },
+  {
+    "family": "Tahoma",
+    "variants": "Regular, Bold",
+    "script": "Latin/Greek/Cyrillic, Arabic, Hebrew, Thai",
+    "version": "95"
+  },
+  {
+    "family": "Tahoma",
+    "variants": "Light, Regular, Bold",
+    "script": "Bundled with Windows"
+  },
+  {
+    "family": "Techno",
+    "variants": "Regular",
+    "script": "Classic only"
+  },
+  {
+    "family": "Textile",
+    "variants": "Regular",
+    "script": "Classic (and iDVD)"
+  },
+  {
+    "family": "Thonburi",
+    "variants": "Regular",
+    "script": "Thai"
+  },
+  {
+    "family": "Times",
+    "variants": "Regular, Italic, Bold, Bold Italic",
+    "script": ""
+  },
+  {
+    "family": "Times CY",
+    "variants": "Regular, Italic, Bold, Bold Italic",
+    "script": "Cyrillic; removed from 10.4"
+  },
+  {
+    "family": "Times New Roman",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic, Arabic, Hebrew",
+    "version": "3.1"
+  },
+  {
+    "family": "Times New Roman",
+    "variants": "Regular, Italic, Bold, Bold Italic",
+    "script": "Bundled with Windows"
+  },
+  {
+    "family": "Traditional Arabic",
+    "variants": "Regular, Bold",
+    "script": "Arabic",
+    "version": "2000"
+  },
+  {
+    "family": "Trebuchet MS",
+    "variants": "Regular, Italic, Bold, Bold Italic",
+    "script": "Bundled with Windows"
+  },
+  {
+    "family": "Trebuchet MS",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "2000"
+  },
+  {
+    "family": "Tunga",
+    "variants": "Regular, Bold",
+    "script": "Kannada",
+    "version": "XP"
+  },
+  {
+    "family": "Urdu Typesetting",
+    "variants": "Regular",
+    "script": "Arabic",
+    "version": ""
+  },
+  {
+    "family": "Utsaah",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Devanagari",
+    "version": ""
+  },
+  {
+    "family": "Vani",
+    "variants": "Regular, Bold",
+    "script": "Telugu",
+    "version": ""
+  },
+  {
+    "family": "Verdana",
+    "variants": "Regular, Italic, Bold, Bold Italic",
+    "script": "Bundled with Windows"
+  },
+  {
+    "family": "Verdana",
+    "variants": "Regular, Bold, Italic, Bold Italic",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "95"
+  },
+  {
+    "family": "Vijaya",
+    "variants": "Regular, Bold",
+    "script": "Tamil",
+    "version": ""
+  },
+  {
+    "family": "Vrinda",
+    "variants": "Regular, Bold",
+    "script": "Bengali",
+    "version": "XP"
+  },
+  {
+    "family": "Webdings",
+    "variants": "Regular",
+    "script": "",
+    "version": "98"
+  },
+  {
+    "family": "Westminster",
+    "variants": "Regular",
+    "script": "Latin/Greek/Cyrillic",
+    "version": "98"
+  },
+  {
+    "family": "Wingdings",
+    "variants": "Regular",
+    "script": "",
+    "version": "3.1"
+  },
+  {
+    "family": "Zapf Chancery",
+    "variants": "Medium Italic",
+    "script": "Classic only"
+  },
+  {
+    "family": "Zapf Dingbats",
+    "variants": "Regular",
+    "script": ""
+  },
+  {
+    "family": "Zapfino",
+    "variants": "Regular",
+    "script": ""
+  }
+]
