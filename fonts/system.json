@@ -382,12 +382,6 @@
     "version": ""
   },
   {
-    "family": "DokChampa",
-    "variants": "Regular",
-    "script": "Lao, Thai",
-    "version": ""
-  },
-  {
     "family": "Dotum",
     "variants": "Regular",
     "script": "Korean",
@@ -739,16 +733,6 @@
     "family": "KufiStandard GK",
     "variants": "Regular",
     "script": "Arabic"
-  },
-  {
-    "family": "Lao UI",
-    "variants": "Regular, Bold",
-    "script": "Lao",
-    "version": "7"
-  },
-  {
-    "family": "LastResort",
-    "variants": "Regular"
   },
   {
     "family": "Latha",
