@@ -255,6 +255,7 @@ header .icon {
   text-align: left;
   overflow-x: hidden;
   overflow-y: auto;
+  padding-right: 10px;
 }
 
 .font-list-item {
@@ -273,7 +274,7 @@ header .icon {
   width: 0;
   height: 1px;
   background-color: #cc181e;
-  transition: opacity 200ms linear, width 1s ease-in-out;
+  transition: opacity 200ms linear, width 1s ease-in-out, background-color 1s;
 }
 
 .font-list-item.loading .font-loading-bar {
@@ -282,8 +283,9 @@ header .icon {
 
 .font-list-item.loaded .font-loading-bar {
   width: 100%;
-  opacity: 0;
-  transition: opacity 200ms linear 1s, width 1s ease-in-out;
+  opacity: .2;
+  background-color: #fff;
+  transition: opacity 200ms linear 1s, width 1s ease-in-out, background-color 1s linear 800ms;
 }
 
 /* -------------------------] Selected Fonts [------------------------*/

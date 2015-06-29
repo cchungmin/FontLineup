@@ -64,6 +64,7 @@
     var queuedWebFonts = [];
 
     function transformSystemFont(font) {
+      font.loaded = true;
       font.display_variant = font.variant.replace(/Regular/, '400').replace(/Bold/, '700');
       return font;
     }
@@ -176,11 +177,13 @@
 
     this.getStyleForFont = function(font) {
       if (isGoogleFont(font)) {
-        return {
-          'font-family': font.family,
-          'font-weight': getWeightForVariant(font.variant),
-          'font-style': getStyleForVariant(font.variant)
-        };
+        if (font.loaded) {
+          return {
+            'font-family': font.family,
+            'font-weight': getWeightForVariant(font.variant),
+            'font-style': getStyleForVariant(font.variant)
+          };
+        }
       } else {
         return {
           'font-family': getPostscriptFamilyName(font)
