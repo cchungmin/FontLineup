@@ -179,6 +179,7 @@ html.left .flex-gutter {
 header {
   position: relative;
   background-color: rgba(0,20,30,.9);
+  background-color: #2a292a;
   color: #97a5b0;
   padding: 1em;
   text-align: center;
@@ -265,6 +266,10 @@ header .icon {
 
 .font-name {
   font-size: 14px;
+  max-width: 20em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .font-loading-bar {

@@ -10,6 +10,7 @@
     Storage.setupAttribute($scope, 'side', 'right');
     Storage.setupAttribute($scope, 'theme', 'dark');
     Storage.setupAttribute($scope, 'selected', []);
+    Storage.setupAttribute($scope, 'textInList', false);
 
     $scope.addFont = function(font) {
       $scope.selected.push(font.name);
@@ -173,7 +174,7 @@
       return postscriptFamily + (postscriptFace == 'Regular' ? '' : '-' + postscriptFace);
     }
 
-    var deferredLoadWebFonts = util.debounce(loadWebFonts, 200);
+    var deferredLoadWebFonts = util.debounce(loadWebFonts, 400);
 
     this.getStyleForFont = function(font) {
       if (isGoogleFont(font)) {
@@ -218,7 +219,7 @@
   mod.service('Storage', function() {
 
     this.setupAttribute = function(scope, name, defaultValue) {
-      var json = typeof defaultValue == 'object';
+      var json = (typeof defaultValue).match(/object|boolean/);
       var set = localStorage.getItem(name) || defaultValue;
       scope[name] = json ? angular.fromJson(set) : set;
       scope.$watch(name, function(set) {
@@ -283,12 +284,6 @@
       };
     }
 
-  });
-
-  mod.filter('userFilter', function() {
-    return function (font) {
-      return font;
-    }
   });
 
   mod.filter('capitalize', function(util) {

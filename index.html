@@ -20,25 +20,37 @@
       </fieldset>
       <fieldset class="font-list flex-shrink">
         <div class="clickable font-list-item"
-             ng-repeat="font in fonts | filter:userFilter"
+             ng-repeat="font in fonts | filter"
              ng-class="{loading: font.loading, loaded: font.loaded}"
              on-scroll-enter="loadWebFont(font)"
              ng-click="addFont(font)">
-          <h6 class="font-name" ng-style="getStyleForFont(font)">{{font.name}}</h6>
+          <h6 class="font-name" ng-style="getStyleForFont(font)">
+            <span ng-if="textInList">{{text}}</span>
+            <span ng-if="!textInList">{{font.name}}</span>
+          </h6>
           <div class="font-loading-bar"></div>
         </div>
       </fieldset>
       <fieldset>
-        <div ng-click="getRandomFonts(10)">
-          Random
+        <div class="inline-block">
+          <div>
+            <button ng-click="textInList = true" ng-show="!textInList">
+              Show Text in List
+            </button>
+            <button ng-click="textInList = false" ng-show="textInList">
+              Hide Text in List
+            </button>
+          </div>
+          <div>
+            <button ng-click="removeAllFonts()">
+              Remove All
+            </button>
+          </div>
         </div>
-        <div ng-click="removeAllFonts()">
-          Remove All
+        <div class="clickable inline-block" ng-click="theme = theme == 'dark' ? 'light' : 'dark'">
+          <img class="centered icon" ng-src="icons/{{theme}}-theme.svg">
+          <label>{{theme|capitalize}} Theme</label>
         </div>
-      </fieldset>
-      <fieldset class="clickable" ng-click="theme = theme == 'dark' ? 'light' : 'dark'">
-        <img class="centered icon" ng-src="icons/{{theme}}-theme.svg">
-        <label>{{theme|capitalize}} Theme</label>
       </fieldset>
     </header>
     <ul class="selected-list flex-gutter" text-fit-container>
