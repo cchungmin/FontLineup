@@ -47,6 +47,16 @@ html.bottom h1 {
   display: none;
 }
 
+html.left .font-list,
+html.right .font-list {
+  min-height: 40vw;
+}
+
+html.top .font-list,
+html.bottom .font-list {
+  min-width: 40vh;
+}
+
 h1,h2,h3,h4,h5,h6 {
   margin: 0;
   font-weight: normal;
@@ -248,11 +258,32 @@ header .icon {
 }
 
 .font-list-item {
+  position: relative;
   height: 2em;
 }
 
 .font-name {
   font-size: 14px;
+}
+
+.font-loading-bar {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 1px;
+  background-color: #cc181e;
+  transition: opacity 200ms linear, width 1s ease-in-out;
+}
+
+.font-list-item.loading .font-loading-bar {
+  width: 50%;
+}
+
+.font-list-item.loaded .font-loading-bar {
+  width: 100%;
+  opacity: 0;
+  transition: opacity 200ms linear 1s, width 1s ease-in-out;
 }
 
 /* -------------------------] Selected Fonts [------------------------*/

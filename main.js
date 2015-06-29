@@ -1,17 +1,18 @@
 (function() {
 
-
   var mod = angular.module('App', []);
 
   mod.controller('FontListController', function($scope, Fonts, Storage, util) {
 
+    util.merge($scope, Fonts);
+
     Storage.setupAttribute($scope, 'text', 'Hi there');
-    Storage.setupAttribute($scope, 'side', 'top');
-    Storage.setupAttribute($scope, 'theme', 'light');
+    Storage.setupAttribute($scope, 'side', 'right');
+    Storage.setupAttribute($scope, 'theme', 'dark');
     Storage.setupAttribute($scope, 'selected', []);
 
     $scope.addFont = function(font) {
-      $scope.selected.push(font);
+      $scope.selected.push(font.name);
     };
 
     $scope.removeFont = function(index) {
@@ -22,6 +23,13 @@
       if (confirm('Sure about that?')) {
         $scope.selected = [];
       }
+    }
+
+    $scope.loadWebFont = function(font) {
+      font.loadCallback = function() {
+        $scope.$digest();
+      }
+      Fonts.queueWebFont(font);
     }
 
     $scope.getRandomFonts = function(limit) {
@@ -36,11 +44,12 @@
       }
     };
 
-    Fonts.load().then(function() {
+    Fonts.loadAll().then(function() {
+      $scope.selected.forEach(function(name) {
+        $scope.loadWebFont(Fonts.getByName(name));
+      });
       $scope.fonts = Fonts.getAll();
     });
-
-    util.merge($scope, Fonts);
 
   });
 
@@ -51,9 +60,11 @@
     var SYSTEM_FONTS_URL = 'fonts/system.json';
 
     var all = [];
+    var byName = {};
     var queuedWebFonts = [];
 
-    function transformSystemFont(font, variant) {
+    function transformSystemFont(font) {
+      font.display_variant = font.variant.replace(/Regular/, '400').replace(/Bold/, '700');
       return font;
     }
 
@@ -61,14 +72,15 @@
       font.platform = 'Google Fonts';
       switch(font.variant) {
         case 'regular':
-          font.variant = '400';
+          font.display_variant = '400';
           break;
         case 'italic':
-          font.variant = '400 Italic';
+          font.display_variant = '400 Italic';
           break;
         default:
-          font.variant = font.variant.replace(/(\d+)italic/, '$1 Italic');
+          font.display_variant = font.variant.replace(/(\d+)italic/, '$1 Italic');
       }
+      font.fvd = (font.display_variant.match(/italic/i) ? 'i' : 'n') + (font.display_variant.charAt(0));
       return font;
     }
 
@@ -83,8 +95,9 @@
             family: family.family,
             variant: variant
           });
-          font.name = family.family + ' ' + util.capitalize(font.variant),
+          font.name = family.family + ' ' + font.display_variant;
           all.push(font);
+          byName[font.name] = font;
         });
       });
     }
@@ -105,10 +118,12 @@
       all.sort(function(a, b) {
         var result = util.alphanumericSort(a.family, b.family);
         if (result === 0) {
-          if (a.variant.length !== b.variant.length) {
-            result = a.variant.length - b.variant.length;
+          var aVariant = a.display_variant || a.variant;
+          var bVariant = b.display_variant || b.variant;
+          if (aVariant.length !== bVariant.length) {
+            result = aVariant.length - bVariant.length;
           } else {
-            result = util.alphanumericSort(a.variant, b.variant);
+            result = util.alphanumericSort(aVariant, bVariant);
           }
         }
         return result;
@@ -121,6 +136,18 @@
 
     function loadWebFonts() {
       WebFont.load({
+        fontloading: function(familyName, fvd) {
+          queuedWebFonts.some(function(font, i) {
+            if (font.family === familyName && font.fvd === fvd) {
+              font.loading = false;
+              font.loaded = true;
+              if (font.loadCallback) {
+                font.loadCallback.call();
+              }
+              return true;
+            }
+          });
+        },
         google: {
           families: queuedWebFonts.map(function(f) {
             return f.family + ':' + f.variant;
@@ -165,14 +192,21 @@
       return all;
     }
 
-    this.load = function() {
+    this.getByName = function(name) {
+      return byName[name];
+    }
+
+    this.loadAll = function() {
       return $q.all([loadSystemFonts(), loadGoogleFonts()]).then(sortAll);
     }
 
     this.queueWebFont = function(font) {
       if (isGoogleFont(font)) {
-        queuedWebFonts.push(font);
-        deferredLoadWebFonts();
+        if (!font.loaded) {
+          font.loading = true;
+          queuedWebFonts.push(font);
+          deferredLoadWebFonts();
+        }
       }
     }
 
@@ -262,10 +296,24 @@
     return util.nlbr;
   });
 
-  mod.directive('onScrollPast', function($window, util) {
+  mod.filter('getFont', function(Fonts) {
+    return function(names) {
+      var result = [];
+      names.forEach(function(name) {
+        var font = Fonts.getByName(name);
+        if (font) {
+          result.push(font);
+        }
+      });
+      return result;
+    }
+  });
+
+  mod.directive('onScrollEnter', function($window, util) {
 
     var parent;
     var waypoints = [];
+    var currentWaypoint;
 
     function addWaypoint(el, enter) {
       var waypoint = {
@@ -274,7 +322,7 @@
       };
       if (!parent) {
         parent = el.parentNode;
-        angular.element(parent).on('scroll', deferredCheckWaypoints);
+        angular.element(parent).on('scroll', util.debounce(checkWaypoints, 200));
       }
       waypoints.push(waypoint);
       return waypoint;
@@ -290,26 +338,32 @@
       if (waypoints.length === 0) {
         return;
       }
-      var parentScrollBottom = parent.offsetTop + parent.offsetHeight + parent.scrollTop;
-      while (true) {
-        var w = waypoints[0];
-        if (w && w.el.offsetTop < parentScrollBottom) {
+      var scrollTop = parent.scrollTop;
+      var scrollBottom = scrollTop + parent.offsetHeight;
+      var i = 0;
+      while (i < waypoints.length) {
+        var w = waypoints[i];
+        var top = w.el.offsetTop;
+        if (top > scrollBottom) {
+          // No need to check the rest of the elements, so break out.
+          break;
+        } else if (top >= scrollTop && top <= scrollBottom) {
+          // Fire the handler and remove the waypoint from the array.
           w.enter();
           waypoints.splice(0, 1);
         } else {
-          break;
+          i++;
         }
       }
     }
 
-    var deferredCheckWaypoints = util.debounce(checkWaypoints, 500);
-    angular.element($window).on('load', deferredCheckWaypoints);
+    angular.element($window).on('load', checkWaypoints);
 
     return {
       restrict: 'A',
       link: function(scope, element, attr) {
         var waypoint = addWaypoint(element[0], function() {
-          scope.$apply(attr['onScrollPast']);
+          scope.$apply(attr['onScrollEnter']);
         });
         scope.$on('$destroy', function() {
           removeWaypoint(waypoint);

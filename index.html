@@ -21,9 +21,11 @@
       <fieldset class="font-list flex-shrink">
         <div class="clickable font-list-item"
              ng-repeat="font in fonts | filter:userFilter"
-             on-scroll-past="queueWebFont(font)"
+             ng-class="{loading: font.loading, loaded: font.loaded}"
+             on-scroll-enter="loadWebFont(font)"
              ng-click="addFont(font)">
           <h6 class="font-name" ng-style="getStyleForFont(font)">{{font.name}}</h6>
+          <div class="font-loading-bar"></div>
         </div>
       </fieldset>
       <fieldset>
@@ -40,7 +42,7 @@
       </fieldset>
     </header>
     <ul class="selected-list flex-gutter" text-fit-container>
-      <li class="selected-font flex-grow" ng-repeat="font in selected track by $index">
+      <li class="selected-font flex-grow" ng-repeat="font in selected | getFont">
           <div class="selected-font-remove clickable" ng-click="removeFont($index)">&times;</div>
           <div class="selected-font-name">{{font.name}}</div>
           <div class="selected-font-text" ng-style="getStyleForFont(font)" text-fit="text|nlbr"></div>
