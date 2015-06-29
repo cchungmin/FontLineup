@@ -47,16 +47,6 @@ html.bottom h1 {
   display: none;
 }
 
-html.left .font-list,
-html.right .font-list {
-  min-height: 40vw;
-}
-
-html.top .font-list,
-html.bottom .font-list {
-  min-width: 40vh;
-}
-
 h1,h2,h3,h4,h5,h6 {
   margin: 0;
   font-weight: normal;
@@ -265,11 +255,25 @@ header .icon {
 }
 
 .font-name {
-  font-size: 14px;
+  font-size: 16px;
   max-width: 20em;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.font-tag {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  width: 15px;
+  height: 15px;
+  line-height: 15px;
+  border-radius: 100%;
+  font-size: 8px;
+  background-color: #3b78a8;
+  text-align: center;
+  color: rgba(255,255,255,.6);
 }
 
 .font-loading-bar {

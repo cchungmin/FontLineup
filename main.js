@@ -11,6 +11,18 @@
     Storage.setupAttribute($scope, 'theme', 'dark');
     Storage.setupAttribute($scope, 'selected', []);
     Storage.setupAttribute($scope, 'textInList', false);
+    Storage.setupAttribute($scope, 'search', '');
+
+    $scope.fontListFilter = function(font) {
+      if (!$scope.search) {
+        return true;
+      }
+      try {
+        return font.name.match(RegExp($scope.search, 'i'));
+      } catch(e) {
+        return font.name.indexOf($scope.search) !== -1;
+      }
+    }
 
     $scope.addFont = function(font) {
       $scope.selected.push(font.name);
@@ -176,6 +188,8 @@
 
     var deferredLoadWebFonts = util.debounce(loadWebFonts, 400);
 
+    this.isGoogleFont = isGoogleFont;
+
     this.getStyleForFont = function(font) {
       if (isGoogleFont(font)) {
         if (font.loaded) {
@@ -320,16 +334,17 @@
       };
       if (!parent) {
         parent = el.parentNode;
-        angular.element(parent).on('scroll', util.debounce(checkWaypoints, 200));
+        angular.element(parent).on('scroll', deferredCheckWaypoints);
       }
       waypoints.push(waypoint);
       return waypoint;
     }
 
     function removeWaypoint(waypoint) {
-      waypoints = goog.array.filter(waypoints, function(w) {
+      waypoints = waypoints.filter(function(w) {
         return w != waypoint;
       });
+      deferredCheckWaypoints();
     }
 
     function checkWaypoints() {
@@ -354,6 +369,8 @@
         }
       }
     }
+
+    var deferredCheckWaypoints = util.debounce(checkWaypoints, 200);
 
     angular.element($window).on('load', checkWaypoints);
 

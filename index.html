@@ -18,9 +18,12 @@
       <fieldset>
         <textarea id="text" class="text" ng-model="text" placeholder="text"></textarea>
       </fieldset>
-      <fieldset class="font-list flex-shrink">
+      <fieldset>
+        <input type="search" ng-model="search" placeholder="Filter...">
+      </fieldset>
+      <fieldset class="font-list flex-shrink flex-grow">
         <div class="clickable font-list-item"
-             ng-repeat="font in fonts | filter"
+             ng-repeat="font in fonts | filter:fontListFilter"
              ng-class="{loading: font.loading, loaded: font.loaded}"
              on-scroll-enter="loadWebFont(font)"
              ng-click="addFont(font)">
@@ -28,6 +31,7 @@
             <span ng-if="textInList">{{text}}</span>
             <span ng-if="!textInList">{{font.name}}</span>
           </h6>
+          <div class="font-tag" ng-if="isGoogleFont(font)" title="Google Fonts API">G</div>
           <div class="font-loading-bar"></div>
         </div>
       </fieldset>
@@ -54,7 +58,7 @@
       </fieldset>
     </header>
     <ul class="selected-list flex-gutter" text-fit-container>
-      <li class="selected-font flex-grow" ng-repeat="font in selected | getFont">
+      <li class="selected-font flex-grow" ng-repeat="font in selected | getFont track by $index">
           <div class="selected-font-remove clickable" ng-click="removeFont($index)">&times;</div>
           <div class="selected-font-name">{{font.name}}</div>
           <div class="selected-font-text" ng-style="getStyleForFont(font)" text-fit="text|nlbr"></div>
