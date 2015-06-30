@@ -66,7 +66,7 @@
 
   });
 
-  mod.service('Fonts', function($http, $q, util) {
+  mod.service('Fonts', function($http, $q, $rootScope, $timeout, util) {
 
     var GOOGLE_FONTS_API_URL = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyApru_pt7gpUGUzfvCkQj8RpS9jGGhkttQ'
     var GOOGLE_FONTS_API_URL = 'fonts/google.json'
@@ -144,6 +144,12 @@
       });
     }
 
+    function loadFinished() {
+      $timeout(function() {
+        $rootScope.$emit('fontsLoaded');
+      });
+    }
+
     function isGoogleFont(font) {
       return font.platform == 'Google Fonts';
     }
@@ -215,7 +221,7 @@
     }
 
     this.loadAll = function() {
-      return $q.all([loadSystemFonts(), loadGoogleFonts()]).then(sortAll);
+      return $q.all([loadSystemFonts(), loadGoogleFonts()]).then(sortAll).then(loadFinished);
     }
 
     this.queueWebFont = function(font) {
@@ -321,7 +327,7 @@
     }
   });
 
-  mod.directive('onScrollEnter', function($window, util) {
+  mod.directive('onScrollEnter', function($rootScope, util) {
 
     var parent;
     var waypoints = [];
@@ -372,7 +378,7 @@
 
     var deferredCheckWaypoints = util.debounce(checkWaypoints, 200);
 
-    angular.element($window).on('load', checkWaypoints);
+    $rootScope.$on('fontsLoaded', checkWaypoints);
 
     return {
       restrict: 'A',
