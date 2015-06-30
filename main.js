@@ -4,6 +4,10 @@
 
   mod.controller('FontListController', function($scope, Fonts, Storage, util) {
 
+    function digest() {
+      $scope.$digest();
+    }
+
     util.merge($scope, Fonts);
 
     Storage.setupAttribute($scope, 'text', 'Hi there');
@@ -38,13 +42,6 @@
       }
     }
 
-    $scope.loadWebFont = function(font) {
-      font.loadCallback = function() {
-        $scope.$digest();
-      }
-      Fonts.queueWebFont(font);
-    }
-
     $scope.getRandomFonts = function(limit) {
       var i = 0;
       while (i < limit) {
@@ -57,9 +54,17 @@
       }
     };
 
+    $scope.$on('fontLoading', digest);
+    $scope.$on('fontError', digest);
+    $scope.$on('fontActivated', digest);
+
+    $scope.$watch('search', function(set) {
+      $scope.searchLoading = false;
+    });
+
     Fonts.loadAll().then(function() {
       $scope.selected.forEach(function(name) {
-        $scope.loadWebFont(Fonts.getByName(name));
+        Fonts.queueWebFont(Fonts.getByName(name));
       });
       $scope.fonts = Fonts.getAll();
     });
@@ -72,9 +77,15 @@
     var GOOGLE_FONTS_API_URL = 'fonts/google.json'
     var SYSTEM_FONTS_URL = 'fonts/system.json';
 
+    var FONT_DEFER_MS = 100;
+
     var all = [];
     var byName = {};
-    var queuedWebFonts = [];
+    var queuedFonts = 0;
+
+    var deferredResetQueue = util.debounce(function() {
+      queuedFonts = 0;
+    }, 1000);
 
     function transformSystemFont(font) {
       font.loaded = true;
@@ -154,26 +165,28 @@
       return font.platform == 'Google Fonts';
     }
 
-    function loadWebFonts() {
-      WebFont.load({
-        fontloading: function(familyName, fvd) {
-          queuedWebFonts.some(function(font, i) {
-            if (font.family === familyName && font.fvd === fvd) {
-              font.loading = false;
-              font.loaded = true;
-              if (font.loadCallback) {
-                font.loadCallback.call();
-              }
-              return true;
-            }
-          });
-        },
-        google: {
-          families: queuedWebFonts.map(function(f) {
-            return f.family + ':' + f.variant;
-          })
-        }
-      });
+    function loadWebFont(font) {
+      $timeout(function() {
+        WebFont.load({
+          loading: function() {
+            font.loading = true;
+            $rootScope.$broadcast('fontLoading');
+          },
+          fontinactive: function() {
+            font.error = true;
+            $rootScope.$broadcast('fontError');
+          },
+          fontactive: function() {
+            font.loading = false;
+            font.loaded = true;
+            $rootScope.$broadcast('fontActivated');
+          },
+          google: {
+            families: [font.family + ':' + font.variant]
+          }
+        });
+      }, queuedFonts++ * FONT_DEFER_MS);
+      deferredResetQueue();
     }
 
     function getWeightForVariant(variant) {
@@ -191,8 +204,6 @@
       var postscriptFace = font.variant.replace(/[\s-]/g, '');
       return postscriptFamily + (postscriptFace == 'Regular' ? '' : '-' + postscriptFace);
     }
-
-    var deferredLoadWebFonts = util.debounce(loadWebFonts, 400);
 
     this.isGoogleFont = isGoogleFont;
 
@@ -227,9 +238,7 @@
     this.queueWebFont = function(font) {
       if (isGoogleFont(font)) {
         if (!font.loaded) {
-          font.loading = true;
-          queuedWebFonts.push(font);
-          deferredLoadWebFonts();
+          loadWebFont(font);
         }
       }
     }

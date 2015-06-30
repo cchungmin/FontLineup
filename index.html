@@ -19,19 +19,29 @@
         <textarea id="text" class="text" ng-model="text" placeholder="text"></textarea>
       </fieldset>
       <fieldset>
-        <input type="search" ng-model="search" placeholder="Filter...">
+        <span class="inline-block hidden spinner" ng-class="{visible: searchLoading}">
+          <span class="rect1"></span>
+          <span class="rect2"></span>
+          <span class="rect3"></span>
+        </span>
+        <input type="inline-block search"
+               placeholder="Filter..."
+               ng-model="search"
+               ng-keydown="searchLoading = true"
+               ng-model-options="{debounce: 500}">
       </fieldset>
       <fieldset class="font-list flex-shrink flex-grow">
         <div class="clickable font-list-item"
              ng-repeat="font in fonts | filter:fontListFilter"
-             ng-class="{loading: font.loading, loaded: font.loaded}"
-             on-scroll-enter="loadWebFont(font)"
+             ng-class="{loading: font.loading, loaded: font.loaded, error: font.error}"
+             on-scroll-enter="queueWebFont(font)"
              ng-click="addFont(font)">
           <h6 class="font-name" ng-style="getStyleForFont(font)">
             <span ng-if="textInList">{{text}}</span>
             <span ng-if="!textInList">{{font.name}}</span>
           </h6>
           <div class="font-tag" ng-if="isGoogleFont(font)" title="Google Fonts API">G</div>
+          <div class="font-tag font-error" ng-if="font.error" title="Font Failed to Load">E</div>
           <div class="font-loading-bar"></div>
         </div>
       </fieldset>
