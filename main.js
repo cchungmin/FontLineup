@@ -29,7 +29,7 @@
     }
 
     $scope.addFont = function(font) {
-      $scope.selected.push(font.name);
+      $scope.selected.push(font.id);
     };
 
     $scope.removeFont = function(index) {
@@ -54,7 +54,6 @@
       }
     };
 
-    $scope.$on('fontLoading', digest);
     $scope.$on('fontError', digest);
     $scope.$on('fontActivated', digest);
 
@@ -63,8 +62,8 @@
     });
 
     Fonts.loadAll().then(function() {
-      $scope.selected.forEach(function(name) {
-        Fonts.queueWebFont(Fonts.getByName(name));
+      $scope.selected.forEach(function(id) {
+        Fonts.queueWebFont(Fonts.getById(id));
       });
       $scope.fonts = Fonts.getAll();
     });
@@ -77,19 +76,14 @@
     var GOOGLE_FONTS_API_URL = 'fonts/google.json'
     var SYSTEM_FONTS_URL = 'fonts/system.json';
 
-    var FONT_DEFER_MS = 500;
-
     var all = [];
-    var byName = {};
-    var queuedFonts = 0;
-
-    var deferredResetQueue = util.debounce(function() {
-      queuedFonts = 0;
-    }, 1000);
+    var byId = {};
+    var queuedWebFonts = [];
 
     function transformSystemFont(font) {
       font.loaded = true;
       font.display_variant = font.variant.replace(/Regular/, '400').replace(/Bold/, '700');
+      font.id = font.family + ':' + font.variant;
       return font;
     }
 
@@ -106,6 +100,7 @@
           font.display_variant = font.variant.replace(/(\d+)italic/, '$1 Italic');
       }
       font.fvd = (font.display_variant.match(/italic/i) ? 'i' : 'n') + (font.display_variant.charAt(0));
+      font.id = font.family + ':' + font.fvd;
       return font;
     }
 
@@ -122,7 +117,7 @@
           });
           font.name = family.family + ' ' + font.display_variant;
           all.push(font);
-          byName[font.name] = font;
+          byId[font.id] = font;
         });
       });
     }
@@ -165,28 +160,32 @@
       return font.platform == 'Google Fonts';
     }
 
-    function loadWebFont(font) {
-      $timeout(function() {
-        WebFont.load({
-          loading: function() {
-            font.loading = true;
-            $rootScope.$broadcast('fontLoading');
-          },
-          fontinactive: function() {
-            font.error = true;
-            $rootScope.$broadcast('fontError');
-          },
-          fontactive: function() {
-            font.loading = false;
-            font.loaded = true;
-            $rootScope.$broadcast('fontActivated');
-          },
-          google: {
-            families: [font.family + ':' + font.variant]
-          }
-        });
-      }, queuedFonts++ * FONT_DEFER_MS);
-      deferredResetQueue();
+    function loadAllWebFonts() {
+      if (!queuedWebFonts.length) {
+        return;
+      }
+      WebFont.load({
+        active: function() {
+          queuedWebFonts = [];
+        },
+        fontinactive: function(family, fvd) {
+          var font = byId[family + ':' + fvd];
+          font.loading = false;
+          font.error = true;
+          $rootScope.$broadcast('fontError');
+        },
+        fontactive: function(family, fvd) {
+          var font = byId[family + ':' + fvd];
+          font.loading = false;
+          font.loaded = true;
+          $rootScope.$broadcast('fontActivated');
+        },
+        google: {
+          families: queuedWebFonts.map(function(font) {
+            return font.family + ':' + font.variant;
+          })
+        }
+      });
     }
 
     function getWeightForVariant(variant) {
@@ -204,6 +203,8 @@
       var postscriptFace = font.variant.replace(/[\s-]/g, '');
       return postscriptFamily + (postscriptFace == 'Regular' ? '' : '-' + postscriptFace);
     }
+
+    var callWebFontLoad = util.debounce(loadAllWebFonts, 500);
 
     this.isGoogleFont = isGoogleFont;
 
@@ -227,8 +228,8 @@
       return all;
     }
 
-    this.getByName = function(name) {
-      return byName[name];
+    this.getById = function(id) {
+      return byId[id];
     }
 
     this.loadAll = function() {
@@ -238,7 +239,9 @@
     this.queueWebFont = function(font) {
       if (isGoogleFont(font)) {
         if (!font.loaded) {
-          loadWebFont(font);
+          font.loading = true;
+          queuedWebFonts.push(font);
+          callWebFontLoad();
         }
       }
     }
@@ -326,8 +329,8 @@
   mod.filter('getFont', function(Fonts) {
     return function(names) {
       var result = [];
-      names.forEach(function(name) {
-        var font = Fonts.getByName(name);
+      names.forEach(function(id) {
+        var font = Fonts.getById(id);
         if (font) {
           result.push(font);
         }
