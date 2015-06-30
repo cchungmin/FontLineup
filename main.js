@@ -77,7 +77,7 @@
     var GOOGLE_FONTS_API_URL = 'fonts/google.json'
     var SYSTEM_FONTS_URL = 'fonts/system.json';
 
-    var FONT_DEFER_MS = 100;
+    var FONT_DEFER_MS = 500;
 
     var all = [];
     var byName = {};
@@ -443,7 +443,8 @@
         }
 
         this.fit = util.debounce(fit);
-        angular.element($window).on('resize orientationchange', util.debounce(fit, 500));
+        angular.element($window).on('resize', util.debounce(fit, 500));
+        angular.element($window).on('orientationchange', util.debounce(fit, 500));
       }
     }
   });
@@ -456,11 +457,11 @@
       scope: {
         text: '=textFit'
       },
-      link: function(scope, element, attr, textFitContainer) {
-        textFitContainer.register(element[0]);
+      link: function(scope, element, attr, textFitController) {
+        textFitController.register(element[0]);
         scope.$watch('text', function(text) {
           element.html(text);
-          textFitContainer.fit();
+          textFitController.fit();
         });
       }
     }
