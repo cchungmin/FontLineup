@@ -339,7 +339,7 @@
     }
   });
 
-  mod.directive('onScrollEnter', function($rootScope, util) {
+  mod.directive('onScrollEnter', function($rootScope, $window, util) {
 
     var parent;
     var waypoints = [];
@@ -388,6 +388,7 @@
     var deferredCheckWaypoints = util.debounce(checkWaypoints, 200);
 
     $rootScope.$on('fontsLoaded', checkWaypoints);
+    angular.element($window).on('resize', checkWaypoints);
 
     return {
       restrict: 'A',
