@@ -35,6 +35,7 @@
              ng-repeat="font in fonts | filter:fontListFilter"
              ng-class="{loading: font.loading, loaded: font.loaded, error: font.error}"
              on-scroll-enter="queueWebFont(font)"
+             scroll-padding="50"
              ng-click="addFont(font)">
           <h6 class="font-name" ng-style="getStyleForFont(font)">
             <span ng-if="textInList">{{text}}</span>

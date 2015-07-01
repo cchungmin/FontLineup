@@ -345,13 +345,9 @@
     var waypoints = [];
     var currentWaypoint;
 
-    function addWaypoint(el, enter) {
-      var waypoint = {
-        el: el,
-        enter: enter
-      };
+    function addWaypoint(waypoint) {
       if (!parent) {
-        parent = el.parentNode;
+        parent = waypoint.el.parentNode;
         angular.element(parent).on('scroll', deferredCheckWaypoints);
       }
       waypoints.push(waypoint);
@@ -374,11 +370,12 @@
       var i = 0;
       while (i < waypoints.length) {
         var w = waypoints[i];
-        var top = w.el.offsetTop;
+        var top = w.el.offsetTop + w.padding;
+        var bottom = w.el.offsetTop - w.padding;
         if (top > scrollBottom) {
           // No need to check the rest of the elements, so break out.
           break;
-        } else if (top >= scrollTop && top <= scrollBottom) {
+        } else if (top >= scrollTop && bottom <= scrollBottom) {
           // Fire the handler and remove the waypoint from the array.
           w.enter();
           waypoints.splice(0, 1);
@@ -395,8 +392,12 @@
     return {
       restrict: 'A',
       link: function(scope, element, attr) {
-        var waypoint = addWaypoint(element[0], function() {
-          scope.$apply(attr['onScrollEnter']);
+        var waypoint = addWaypoint({
+          el: element[0],
+          padding: parseInt(attr['scrollPadding'], 10) || 0,
+          enter: function() {
+            scope.$apply(attr['onScrollEnter']);
+          }
         });
         scope.$on('$destroy', function() {
           removeWaypoint(waypoint);
