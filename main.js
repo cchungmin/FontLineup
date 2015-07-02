@@ -12,6 +12,7 @@
 
     Storage.setupAttribute($scope, 'text', 'Hi there');
     Storage.setupAttribute($scope, 'side', 'right');
+    Storage.setupAttribute($scope, 'size', 'auto');
     Storage.setupAttribute($scope, 'theme', 'dark');
     Storage.setupAttribute($scope, 'selected', []);
     Storage.setupAttribute($scope, 'textInList', false);
@@ -416,14 +417,14 @@
 
     return {
       restrict: 'A',
-      controller: function($element) {
+      controller: function($scope, $element) {
         var fontSize;
         var container = $element[0];
         var elements = angular.element();
 
-        function release() {
+        function setSize(s) {
           angular.forEach(elements, function(el) {
-            el.style.fontSize = '';
+            el.style.fontSize = s ? s + 'px' : '';
           });
         }
 
@@ -432,7 +433,14 @@
         }
 
         function fit() {
-          release();
+          if (!elements.length) {
+            return;
+          }
+          if ($scope.size != 'auto') {
+            setSize($scope.size);
+            return;
+          }
+          setSize();
           getSize();
           while (canContinue()) {
             fontSize--;
@@ -451,6 +459,9 @@
         }
 
         this.fit = util.debounce(fit);
+
+        $scope.$watch('size', fit);
+
         angular.element($window).on('resize', util.debounce(fit, 500));
         angular.element($window).on('orientationchange', util.debounce(fit, 500));
       }
