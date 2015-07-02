@@ -413,7 +413,7 @@
 
   mod.directive('textFitContainer', function($window, util) {
 
-    var MIN_SIZE = 10;
+    var MIN_SIZE = 6;
 
     return {
       restrict: 'A',
