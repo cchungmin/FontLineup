@@ -105,7 +105,7 @@
     }
 
     function appendFonts(fontFamilies, transformFn) {
-      fontFamilies.forEach(function(family) {
+      fontFamilies.forEach(function(family, i) {
         var variants = family.variants;
         if (typeof variants === 'string') {
           variants = variants.split(/,\s*/);
@@ -385,7 +385,7 @@
       }
     }
 
-    var deferredCheckWaypoints = util.debounce(checkWaypoints, 200);
+    var deferredCheckWaypoints = util.debounce(checkWaypoints, 500);
 
     $rootScope.$on('fontsLoaded', checkWaypoints);
     angular.element($window).on('resize', checkWaypoints);
