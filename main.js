@@ -82,7 +82,7 @@
 
     function transformSystemFont(font) {
       font.loaded = true;
-      font.display_variant = font.variant.replace(/Regular/, '400').replace(/Bold/, '700');
+      font.display_variant = font.variant.replace(/Regular/i, '400').replace(/Bold/i, '700');
       font.id = font.family + ':' + font.variant;
       return font;
     }
@@ -212,7 +212,9 @@
       if (isGoogleFont(font)) {
         if (font.loaded) {
           return {
-            'font-family': font.family,
+            // Looks like quotation marks are needed for JQLite, even though
+            // the CSS is valid without them.
+            'font-family': "'" + font.family + "'",
             'font-weight': getWeightForVariant(font.variant),
             'font-style': getStyleForVariant(font.variant)
           };
