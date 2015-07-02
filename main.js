@@ -370,12 +370,13 @@
       var i = 0;
       while (i < waypoints.length) {
         var w = waypoints[i];
-        var top = w.el.offsetTop + w.padding;
-        var bottom = w.el.offsetTop - w.padding;
-        if (top > scrollBottom) {
+        var top = w.el.offsetTop;
+        var bottom = w.el.offsetTop;
+        var padding = w.padding;
+        if (top > scrollBottom + padding) {
           // No need to check the rest of the elements, so break out.
           break;
-        } else if (top >= scrollTop && bottom <= scrollBottom) {
+        } else if (top >= scrollTop - padding && bottom <= scrollBottom + padding) {
           // Fire the handler and remove the waypoint from the array.
           w.enter();
           waypoints.splice(0, 1);
