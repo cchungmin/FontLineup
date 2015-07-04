@@ -3,1406 +3,1544 @@
     "family": "Abadi MT Condensed Light",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic",
-    "version": "98"
+    "version_windows": "98"
   },
   {
     "family": "Aharoni",
     "variants": "Bold",
     "script": "Hebrew",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Al Bayan",
     "variants": "Regular, Bold",
-    "script": "Arabic"
+    "script": "Arabic",
+    "install_mac": true
   },
   {
     "family": "Aldhabi",
     "variants": "Regular",
     "script": "Arabic",
-    "version": "8"
+    "install_windows": true,
+    "version_windows": "8"
   },
   {
     "family": "American Typewriter",
     "variants": "Condensed Light, Condensed, Condensed Bold, Light, Regular, Bold",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "Andale Mono",
+    "category": "monospace",
     "variants": "Regular",
-    "script": ""
+    "install_windows": 4.16,
+    "install_mac": 94.59
   },
   {
     "family": "Andalus",
     "variants": "Regular",
     "script": "Arabic",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Angsana New",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "AngsanaUPC",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Aparajita",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Devanagari",
-    "version": "7"
+    "install_windows": true,
+    "version_windows": "7"
   },
   {
     "family": "Apple Chancery",
     "variants": "Regular",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "Apple Gothic",
     "variants": "Regular",
-    "script": "Korean"
+    "script": "Korean",
+    "install_mac": true
   },
   {
     "family": "Apple LiGothic",
     "variants": "Medium",
-    "script": "Traditional Chinese"
+    "script": "Traditional Chinese",
+    "install_mac": true
   },
   {
     "family": "Apple LiSung",
     "variants": "Light",
-    "script": "Traditional Chinese"
+    "script": "Traditional Chinese",
+    "install_mac": true
   },
   {
     "family": "Apple Myungjo",
     "variants": "Regular",
-    "script": "Korean"
+    "script": "Korean",
+    "install_mac": true
   },
   {
     "family": "Apple Symbols",
     "variants": "Regular",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "AquaKana",
-    "variants": "Regular"
+    "variants": "Regular",
+    "install_mac": true
   },
   {
     "family": "Arabic Typesetting",
     "variants": "Regular",
     "script": "Arabic",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Arial",
+    "category": "sans-serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin, Greek, Cyrillic, Arabic, Hebrew",
-    "install_ver_windows": "3.1",
-    "install_base_windows": 99.84,
-    "install_base_mac": 98.74
+    "version_windows": "3.1",
+    "install_windows": 99.84,
+    "install_mac": 98.74
   },
   {
     "family": "Arial Black",
+    "category": "sans-serif",
     "variants": "Regular",
     "script": "Latin, Cyrillic",
-    "install_base_windows": 98.08,
-    "install_base_mac": 96.22
+    "install_windows": 98.08,
+    "install_mac": 96.22
   },
   {
     "family": "Arial Narrow",
+    "category": "sans-serif",
     "variants": "Regular, Italic, Bold, Bold Italic",
     "script": "Latin, Cyrillic",
-    "install_base_windows": 88.39,
-    "install_base_mac": 94.77
+    "install_windows": 88.39,
+    "install_mac": 94.77
   },
   {
     "family": "Arial Rounded MT Bold",
+    "category": "sans-serif",
     "variants": "Regular",
     "script": "Latin",
-    "install_base_windows": 59.53,
-    "install_base_mac": 95.14
+    "install_windows": 59.53,
+    "install_mac": 95.14
   },
   {
     "family": "Ayuthaya",
     "variants": "Regular",
-    "script": "Thai"
+    "script": "Thai",
+    "install_mac": true
   },
   {
     "family": "Baghdad",
     "variants": "Regular",
-    "script": "Arabic"
+    "script": "Arabic",
+    "install_mac": true
   },
   {
     "family": "Baskerville",
+    "category": "serif",
     "variants": "Regular, Italic, Semi-bold, Semi-bold Italic, Bold, Bold Italic",
-    "script": ""
+    "install_windows": 60.35,
+    "install_mac": 93.33
   },
   {
     "family": "Batang",
     "variants": "Regular",
     "script": "Korean",
-    "version": "XP"
+    "version_windows": "XP"
   },
   {
     "family": "BatangChe",
     "variants": "Regular",
     "script": "Korean",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "BiauKai",
     "variants": "Regular",
-    "script": "Traditional Chinese"
+    "script": "Traditional Chinese",
+    "install_mac": true
   },
   {
     "family": "Big Caslon",
+    "category": "serif",
     "variants": "Medium",
-    "script": ""
+    "install_mac": 92.61
   },
   {
     "family": "Book Antiqua",
+    "category": "serif",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic",
-    "version": "98"
+    "version_windows": "98",
+    "install_windows": 86.09,
+    "install_mac": 49.01
   },
   {
     "family": "Browallia New",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "BrowalliaUPC",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Brush Script",
+    "category": "script",
     "variants": "Italic",
-    "script": ""
+    "install_windows": 59.64,
+    "install_mac": 90.99
   },
   {
     "family": "Calibri",
+    "category": "sans-serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin",
-    "install_ver_windows": "Vista",
-    "install_base_windows": 83.41,
-    "install_base_mac": 38.74
+    "version_windows": "Vista",
+    "install_windows": 83.41,
+    "install_mac": 38.74
   },
   {
     "family": "Calibri Light",
+    "category": "sans-serif",
     "variants": "Regular, Italic",
     "script": "Latin/Greek/Cyrillic, Vietnamese",
-    "version": "8.0"
+    "version_windows": "8.0",
+    "install_windows": 83.41,
+    "install_mac": 38.74
   },
   {
     "family": "Calisto MT",
+    "category": "serif",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic",
-    "version": "98"
+    "version_windows": "98",
+    "install_windows": 58.43,
+    "install_mac": 46.31
   },
   {
     "family": "Cambria",
+    "category": "serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic",
-    "version": "Vista"
+    "version_windows": "Vista",
+    "install_windows": 83.35,
+    "install_mac": 35.32
   },
   {
     "family": "Cambria Math",
     "variants": "Regular",
     "script": "Math",
-    "version": "Vista"
+    "version_windows": "Vista",
+    "install_windows": true
   },
   {
     "family": "Candara",
+    "category": "sans-serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic",
-    "version": "Vista"
+    "version_windows": "Vista",
+    "install_windows": 83.08,
+    "install_mac": 34.41
   },
   {
     "family": "Century Gothic",
+    "category": "sans-serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic",
-    "version": "98"
+    "version_windows": "98",
+    "install_windows": 87.62,
+    "install_mac": 53.15
   },
   {
     "family": "Chalkboard",
-    "variants": "Regular, Bold"
+    "variants": "Regular, Bold",
+    "install_mac": true
   },
   {
     "family": "Chalkduster",
     "variants": "Regular",
-    "version": "10.6"
+    "version_mac": "10.6"
   },
   {
     "family": "Charcoal",
     "variants": "Regular",
-    "script": "Classic only"
+    "install_mac": true
   },
   {
     "family": "Charcoal CY",
     "variants": "Regular",
-    "script": "Cyrillic"
+    "script": "Cyrillic",
+    "install_mac": true
   },
   {
     "family": "Chicago",
     "variants": "Regular",
-    "script": "Classic only, see Krungthep below"
+    "script": "Classic only, see Krungthep below",
+    "install_mac": true
   },
   {
     "family": "Cochin",
     "variants": "Regular, Italic, Bold, Bold Italic",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "Comic Sans",
-    "variants": "Regular, Bold",
-    "script": "Bundled with Windows"
-  },
-  {
-    "family": "Comic Sans MS",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic",
-    "version": "95"
+    "version_windows": "95",
+    "install_windows": 99.95,
+    "install_mac": 91.71
   },
   {
     "family": "Consolas",
+    "category": "monospace",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic",
-    "version": "Vista"
+    "version_windows": "Vista",
+    "install_windows": 82.97,
+    "install_mac": 34.77
   },
   {
     "family": "Constantia",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic",
-    "version": "Vista"
+    "version_windows": "Vista"
   },
   {
     "family": "Cooper",
     "variants": "Black",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "Copperplate",
+    "category": "fantasy",
     "variants": "Light, Regular, Bold",
-    "script": ""
+    "install_windows": 66.87,
+    "install_mac": 92.61
   },
   {
     "family": "Copperplate Gothic Bold",
+    "category": "fantasy",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic",
-    "version": "98"
+    "version_windows": "98",
+    "install_windows": 66.87,
+    "install_mac": 92.61
   },
   {
     "family": "Copperplate Gothic Light",
+    "category": "fantasy",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic",
-    "version": "98"
+    "version_windows": "98",
+    "install_windows": 66.87,
+    "install_mac": 92.61
   },
   {
     "family": "Corbel",
     "variants": "Regular, Italic, Bold, Bold Italic",
     "script": "Latin/Greek/Cyrillic",
-    "version": "Vista"
+    "version_windows": "Vista"
   },
   {
     "family": "Cordia New",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "CordiaUPC",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Corsiva Hebrew",
     "variants": "Regular, Bold",
-    "script": "Hebrew"
+    "script": "Hebrew",
+    "install_mac": true
   },
   {
     "family": "Courier",
+    "category": "monospace",
     "variants": "Regular, Oblique, Bold, Bold Oblique",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "Courier New",
-    "variants": "Regular, Italic, Bold, Bold Italic",
-    "script": "Bundled with Windows"
-  },
-  {
-    "family": "Courier New",
+    "category": "monospace",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic, Arabic, Hebrew",
-    "version": "3.1"
+    "version_windows": "3.1",
+    "install_windows": 99.73,
+    "install_mac": 95.68
   },
   {
     "family": "DFKai-SB",
     "variants": "Regular",
     "script": "Traditional Chinese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "DaunPenh",
     "variants": "Regular",
     "script": "Khmer",
-    "version": "Vista"
+    "version_windows": "Vista"
   },
   {
     "family": "David",
     "variants": "Regular, Bold",
     "script": "Hebrew",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "DecoType Naskh",
     "variants": "Regular",
-    "script": "Naskh Arabic"
+    "script": "Naskh Arabic",
+    "install_mac": true
   },
   {
     "family": "Devanagari",
     "variants": "Regular, Bold",
-    "script": "Devanagari"
+    "script": "Devanagari",
+    "install_mac": true
   },
   {
     "family": "Didot",
+    "category": "serif",
     "variants": "Regular, Italic, Bold",
-    "script": ""
+    "install_mac": 93.51
   },
   {
     "family": "DilleniaUPC",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Dotum",
     "variants": "Regular",
     "script": "Korean",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "DotumChe",
     "variants": "Regular",
     "script": "Korean",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Ebrima",
     "variants": "Regular, Bold",
     "script": "N'Ko, Tifinagh, Vai",
-    "version": "7"
+    "version_windows": "7"
   },
   {
     "family": "Estrangelo Edessa",
     "variants": "Regular",
     "script": "Syriac",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "EucrosiaUPC",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Euphemia",
     "variants": "Regular",
     "script": "Unified Canadian Syllabics",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Euphemia UCAS",
     "variants": "Regular, Italic, Bold",
-    "script": "Canadian Syllabics"
-  },
-  {
-    "family": "Fang Song",
-    "variants": "Regular",
-    "script": "Simplified Chinese"
+    "script": "Canadian Syllabics",
+    "install_mac": true
   },
   {
     "family": "FangSong",
-    "variants": "Monospaced",
+    "variants": "Regular",
     "script": "Simplified Chinese",
-    "version": ""
+    "platform": "Windows, Mac"
   },
   {
     "family": "FrankRuehl",
     "variants": "Regular",
     "script": "Hebrew",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Franklin Gothic Medium",
+    "category": "sans-serif",
     "variants": "Regular, Italic",
     "script": "Latin/Greek/Cyrillic",
-    "version": "7"
+    "version_windows": "7",
+    "install_windows": 99.18,
+    "install_mac": 2.1
   },
   {
     "family": "FreesiaUPC",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Futura",
+    "category": "sans-serif",
     "variants": "Condensed Medium, Condensed Extra Bold, Medium, Medium Italic",
-    "script": ""
+    "install_windows": 1.26,
+    "install_mac": 94.41
   },
   {
     "family": "Gabriola",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic",
-    "version": "7"
+    "version_windows": "7"
   },
   {
     "family": "Gadget",
     "variants": "Regular",
-    "script": "Classic only"
+    "script": "Classic only",
+    "install_mac": true
   },
   {
     "family": "Gadugi",
     "variants": "Regular, Bold",
     "script": "Cherokee, Unified Canadian Aboriginal Syllabics",
-    "version": "8"
+    "version_windows": "8"
+  },
+  {
+    "family": "Garamond",
+    "category": "serif",
+    "variants": "Light, Light Italic, Book, Book Italic, Bold, Bold Italic",
+    "install_windows": 86.47,
+    "install_mac": 49.91
   },
   {
     "family": "Gautami",
     "variants": "Regular, Bold",
     "script": "Telugu",
-    "version": "XP"
+    "version_windows": "XP"
   },
   {
     "family": "Geeza Pro",
     "variants": "Regular, Bold",
-    "script": "Arabic"
+    "script": "Arabic",
+    "install_mac": true
   },
   {
     "family": "Geezah",
     "variants": "Regular",
-    "script": "Arabic"
+    "script": "Arabic",
+    "install_mac": true
   },
   {
     "family": "Geneva",
+    "category": "sans-serif",
     "variants": "Regular",
-    "script": ""
+    "install_windows": 2.08,
+    "install_mac": 99.64
   },
   {
     "family": "Geneva CY",
+    "category": "sans-serif",
     "variants": "Regular",
-    "script": "Cyrillic"
+    "script": "Cyrillic",
+    "install_mac": true
   },
   {
     "family": "Georgia",
-    "variants": "Regular, Italic, Bold, Bold Italic",
-    "script": "Bundled with Windows"
-  },
-  {
-    "family": "Georgia",
+    "category": "serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic",
-    "version": "2000"
+    "version_windows": "2000",
+    "install_windows": 99.4,
+    "install_mac": 97.48
   },
   {
     "family": "Gill Sans",
+    "category": "sans-serif",
     "variants": "Light, Light Italic, Regular, Italic, Bold, Bold Italic",
-    "script": ""
+    "install_windows": 58.54,
+    "install_mac": 95.5
   },
   {
     "family": "Gisha",
     "variants": "Regular, Bold",
     "script": "Hebrew",
-    "version": ""
+    "install_windows": true
+  },
+  {
+    "family": "Goudy Old Style",
+    "category": "serif",
+    "variants": "Regular",
+    "install_windows": 58.11,
+    "install_mac": 47.57
   },
   {
     "family": "Gujarati",
     "variants": "Regular, Bold",
-    "script": "Gujarati"
+    "script": "Gujarati",
+    "install_mac": true
   },
   {
     "family": "Gulim",
     "variants": "Regular",
     "script": "Korean",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "GulimChe",
     "variants": "Regular",
     "script": "Korean",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Gung Seoche",
     "variants": "Regular",
-    "script": "Korean, named \"#GungSeo\" in font list"
+    "script": "Korean",
+    "install_mac": true
   },
   {
     "family": "Gungsuh",
     "variants": "Regular",
     "script": "Korean",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "GungsuhChe",
     "variants": "Regular",
     "script": "Korean",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Gurmukhi",
     "variants": "Regular",
-    "script": "Gurmukhi"
+    "script": "Gurmukhi",
+    "install_mac": true
   },
   {
     "family": "Hangangche",
     "variants": "Regular",
-    "script": "Korean"
+    "script": "Korean",
+    "install_mac": true
   },
   {
     "family": "HeadlineA",
     "variants": "Regular",
-    "script": "Korean, named \"#HeadLineA\" in font list"
+    "script": "Korean",
+    "install_mac": true
   },
   {
     "family": "Hei",
     "variants": "Regular",
-    "script": "Simplified Chinese"
+    "script": "Simplified Chinese",
+    "install_mac": true
   },
   {
     "family": "Helvetica",
+    "category": "sans-serif",
     "variants": "Regular, Oblique, Bold, Bold Oblique",
-    "script": "System Font for Small Text"
+    "script": "System Font for Small Text",
+    "install_windows": 7.34,
+    "install_mac": 100
   },
   {
     "family": "Helvetica CY",
+    "category": "sans-serif",
     "variants": "Regular, Oblique, Bold, Bold Oblique",
-    "script": "Cyrillic; Face is condensed compared to Helvetica, Helvetica Neue"
+    "script": "Cyrillic",
+    "install_mac": true
   },
   {
     "family": "Helvetica Neue",
+    "category": "sans-serif",
     "variants": "Condensed Bold, Condensed Black, Ultra-light, Ultra-light Italic, Light, Light Italic, Regular, Italic, Bold, Bold Italic",
-    "script": ""
+    "install_windows": 7.34,
+    "install_mac": 100
   },
   {
     "family": "Herculanum",
     "variants": "Regular",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "Hiragino Kaku Gothic Pro",
     "variants": "W3, W6",
-    "script": "Japanese"
+    "script": "Japanese",
+    "install_mac": true
   },
   {
     "family": "Hiragino Kaku Gothic ProN",
     "variants": "W3, W6",
-    "script": "Japanese"
+    "script": "Japanese",
+    "install_mac": true
   },
   {
     "family": "Hiragino Kaku Gothic Std",
     "variants": "W8",
-    "script": "Japanese"
+    "script": "Japanese",
+    "install_mac": true
   },
   {
     "family": "Hiragino Kaku Gothic StdN",
     "variants": "W8",
-    "script": "Japanese"
+    "script": "Japanese",
+    "install_mac": true
   },
   {
     "family": "Hiragino Maru Gothic Pro",
     "variants": "W4",
-    "script": "Japanese"
+    "script": "Japanese",
+    "install_mac": true
   },
   {
     "family": "Hiragino Maru Gothic ProN",
     "variants": "W4",
-    "script": "Japanese"
+    "script": "Japanese",
+    "install_mac": true
   },
   {
     "family": "Hiragino Mincho Pro",
     "variants": "W3, W6",
-    "script": "Japanese"
+    "script": "Japanese",
+    "install_mac": true
   },
   {
     "family": "Hiragino Mincho ProN",
     "variants": "W3, W6",
-    "script": "Japanese"
+    "script": "Japanese",
+    "install_mac": true
   },
   {
     "family": "Hoefler Text",
-    "variants": "Regular, Italic, Black, Black Italic, Ornaments"
+    "category": "serif",
+    "variants": "Regular, Italic, Black, Black Italic, Ornaments",
+    "install_windows": 0.99,
+    "install_mac": 92.61
   },
   {
     "family": "Impact",
+    "category": "sans-serif",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic",
-    "version": "98"
-  },
-  {
-    "family": "Impact",
-    "variants": "Regular",
-    "script": "Bundled with Windows"
+    "version_windows": "98",
+    "install_mac": 95.14
   },
   {
     "family": "Inai Mathi",
     "variants": "Regular",
-    "version": "10.4",
-    "script": "Tamil"
+    "script": "Tamil",
+    "version_mac": "10.4"
   },
   {
     "family": "IrisUPC",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Iskoola Pota",
     "variants": "Regular, Bold",
     "script": "Sinhala",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "JasmineUPC",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Jung Gothic",
     "variants": "Medium",
-    "script": "Korean"
+    "script": "Korean",
+    "install_mac": true
   },
   {
     "family": "Kai",
     "variants": "Regular",
-    "script": "Simplified Chinese"
+    "script": "Simplified Chinese",
+    "install_mac": true
   },
   {
     "family": "KaiTi",
     "variants": "Regular",
     "script": "Simplified Chinese",
-    "version": "7"
+    "version_windows": "7"
   },
   {
     "family": "Kalinga",
     "variants": "Regular, Bold",
     "script": "Oriya",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Kartika",
     "variants": "Regular, Bold",
     "script": "Malayalam",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Keyboard",
-    "variants": "Regular"
+    "variants": "Regular",
+    "install_mac": true
   },
   {
     "family": "Khmer UI",
     "variants": "Regular, Bold",
     "script": "Khmer",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "KodchiangUPC",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Kokila",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Devanagari",
-    "version": "7"
+    "version_windows": "7"
   },
   {
     "family": "Krungthep",
     "variants": "Regular",
-    "script": "Thai"
+    "script": "Thai",
+    "install_mac": true
   },
   {
     "family": "KufiStandard GK",
     "variants": "Regular",
-    "script": "Arabic"
+    "script": "Arabic",
+    "install_mac": true
   },
   {
     "family": "Latha",
     "variants": "Regular, Bold",
     "script": "Tamil",
-    "version": "XP"
+    "version_windows": "XP"
   },
   {
     "family": "Leelawadee",
     "variants": "Regular, Bold",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Levenim MT",
     "variants": "Regular, Bold",
     "script": "Hebrew",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "LiHei Pro",
     "variants": "Medium",
-    "script": "Traditional Chinese"
+    "script": "Traditional Chinese",
+    "install_mac": true
   },
   {
     "family": "LiSong Pro",
     "variants": "Light",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "LilyUPC",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Thai",
-    "version": ""
+    "install_windows": true
+  },
+  {
+    "family": "Lucida Bright",
+    "category": "serif",
+    "variants": "Regular",
+    "install_windows": 76.12,
+    "install_mac": 99.64
   },
   {
     "family": "Lucida Console",
+    "category": "monospace",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic",
-    "version": "98"
+    "version_windows": "98",
+    "install_windows": 99.18
   },
   {
     "family": "Lucida Grande",
+    "category": "sans-serif",
     "variants": "Regular, Bold",
-    "script": "Main System Font in Mac OS X"
+    "script": "Main System Font in Mac OS X",
+    "install_mac": 100
   },
   {
     "family": "Lucida Handwriting Italic",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic",
-    "version": "98"
+    "version_windows": "98"
+  },
+  {
+    "family": "Lucida Sans Typewriter",
+    "category": "monospace",
+    "variants": "Regular",
+    "install_windows": 74.81,
+    "install_mac": 99.64
   },
   {
     "family": "Lucida Sans Unicode",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic, Hebrew",
-    "version": "98"
+    "version_windows": "98"
   },
   {
     "family": "MS Gothic, MS PGothic",
     "variants": "Monospaced, Proportional",
     "script": "Japanese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "MS Mincho, MS PMincho",
     "variants": "Monospaced, Proportional",
     "script": "Japanese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "MS UI Gothic",
     "variants": "Proportional",
     "script": "Japanese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "MV Boli",
     "variants": "Regular",
     "script": "Thaana",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Malgun Gothic",
     "variants": "Regular, Bold",
     "script": "Korean (no Hanja)",
-    "version": "Vista"
+    "version_windows": "Vista"
   },
   {
     "family": "Mangal",
     "variants": "Regular, Bold",
     "script": "Devanagari",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Marker Felt",
     "variants": "Thin, Wide",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "Marlett",
     "variants": "Regular",
     "script": "Windows Interface",
-    "version": "95"
+    "version_windows": "95"
   },
   {
     "family": "Meiryo",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Japanese",
-    "version": "Vista"
+    "version_windows": "Vista"
   },
   {
     "family": "Meiryo UI",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Japanese",
-    "version": "7"
+    "version_windows": "7"
   },
   {
     "family": "Menlo",
     "variants": "Regular, Bold, Italic",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "Microsoft Himalaya",
     "variants": "Regular",
     "script": "Tibetan",
-    "version": "Vista"
+    "version_windows": "Vista"
   },
   {
     "family": "Microsoft JhengHei",
     "variants": "Regular, Bold",
     "script": "Traditional Chinese",
-    "version": "Vista"
+    "version_windows": "Vista"
   },
   {
     "family": "Microsoft JhengHei UI",
     "variants": "Regular, Bold",
     "script": "Traditional Chinese",
-    "version": "8"
+    "version_windows": "8"
   },
   {
     "family": "Microsoft New Tai Lue",
     "variants": "Regular, Bold",
     "script": "New Tai Lue",
-    "version": "7"
+    "version_windows": "7"
   },
   {
     "family": "Microsoft PhagsPa",
     "variants": "Regular, Bold",
     "script": "'Phags-pa",
-    "version": "7"
+    "version_windows": "7"
   },
   {
     "family": "Microsoft Sans Serif",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic, Arabic, Hebrew, Thai",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Microsoft Tai Le",
     "variants": "Regular, Bold",
     "script": "Tai NÃ¼a",
-    "version": "7"
+    "version_windows": "7"
   },
   {
     "family": "Microsoft Uighur",
     "variants": "Regular, Bold",
     "script": "Uighur",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Microsoft YaHei",
     "variants": "Regular, Bold",
     "script": "Simplified Chinese",
-    "version": "Vista"
+    "version_windows": "Vista"
   },
   {
     "family": "Microsoft YaHei UI",
     "variants": "Regular, Bold",
     "script": "Simplified Chinese",
-    "version": "8"
+    "version_windows": "8"
   },
   {
     "family": "Microsoft Yi Baiti",
     "variants": "Regular",
     "script": "Yi",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "MingLiU, PMingLiU",
     "variants": "Monospaced, Proportional",
     "script": "Traditional Chinese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "MingLiU-ExtB, PMingLiU-ExtB",
     "variants": "Monospaced, Proportional",
     "script": "Traditional Chinese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "MingLiU_HKSCS",
     "variants": "Monospaced",
     "script": "Cantonese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "MingLiU_HKSCS-ExtB",
     "variants": "Monospaced",
     "script": "Cantonese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Miriam",
     "variants": "Monospaced, Proportional",
     "script": "Hebrew",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Monaco",
+    "category": "monospace",
     "variants": "Regular",
-    "script": ""
+    "install_windows": 2.74,
+    "install_mac": 99.82
   },
   {
     "family": "Monaco CY",
     "variants": "Regular",
-    "script": "Cyrillic"
+    "script": "Cyrillic",
+    "install_mac": true
   },
   {
     "family": "Mongolian Baiti",
     "variants": "Regular",
     "script": "Mongolian",
-    "version": "Vista"
+    "version_windows": "Vista"
   },
   {
     "family": "MoolBoran",
     "variants": "Regular",
     "script": "Khmer",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Mshtakan",
     "variants": "Regular, Oblique, Bold, Bold Oblique",
-    "version": "10.3",
-    "script": "Armenian"
+    "script": "Armenian",
+    "version_mac": "10.3"
   },
   {
     "family": "Myanmar Text",
     "variants": "Regular",
     "script": "Myanmar",
-    "version": "8"
+    "version_windows": "8"
   },
   {
     "family": "NSimSun",
     "variants": "Monospaced",
     "script": "Simplified Chinese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Nadeem",
     "variants": "Regular",
-    "script": "Arabic"
+    "script": "Arabic",
+    "install_mac": true
   },
   {
     "family": "Narkisim",
     "variants": "Regular",
     "script": "Hebrew",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "New Peninim",
     "variants": "Regular, Inclined, Bold, Bold Inclined",
-    "script": "Hebrew"
+    "script": "Hebrew",
+    "install_mac": true
   },
   {
     "family": "New York",
     "variants": "Regular",
-    "script": "Classic only"
+    "script": "Classic only",
+    "install_mac": true
   },
   {
     "family": "News Gothic MT",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic",
-    "version": "98"
+    "version_windows": "98"
   },
   {
     "family": "Nirmala UI",
     "variants": "Regular, Bold",
     "script": "Devanagari, Bengali, Gurmukhi, Gujarati, Oriya, Tamil, Telugu, Kannada, Malayalam, Sinhala",
-    "version": "8"
+    "version_windows": "8"
   },
   {
     "family": "Nyala",
     "variants": "Regular",
     "script": "Ethiopic",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Optima",
+    "category": "sans-serif",
     "variants": "Regular, Italic, Bold, Bold Italic, Extra Black",
-    "script": ""
+    "install_windows": 2.52,
+    "install_mac": 93.69
   },
   {
     "family": "Osaka",
     "variants": "Regular, Monospace",
-    "script": "Japanese"
+    "script": "Japanese",
+    "install_mac": true
   },
   {
     "family": "PC Myungjo",
     "variants": "Regular",
-    "script": "Korean, named \"#PCMyungjo\" in font list"
+    "script": "Korean",
+    "install_mac": true
   },
   {
     "family": "Palatino",
+    "category": "serif",
     "variants": "Regular, Italic, Bold, Bold Italic",
-    "script": "Classic or iLife"
+    "script": "Classic or iLife",
+    "install_windows": 99.29,
+    "install_mac": 86.13
   },
   {
     "family": "Palatino Linotype",
+    "category": "serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic",
-    "version": "2000"
+    "version_windows": "2000",
+    "install_windows": 99.29,
+    "install_mac": 86.13
   },
   {
     "family": "Papyrus",
+    "category": "fantasy",
     "variants": "Regular",
-    "script": ""
+    "install_windows": 70.37,
+    "install_mac": 92.43
   },
   {
     "family": "Pilgiche",
     "variants": "Regular",
-    "script": "Korean, named \"#PilGi\" in font list"
-  },
-  {
-    "family": "Plantagenet Cherokee",
-    "variants": "Regular",
-    "script": "Cherokee"
+    "script": "Korean",
+    "install_mac": true
   },
   {
     "family": "Plantagenet Cherokee",
     "variants": "Regular",
     "script": "Cherokee",
-    "version": ""
+    "platform": "Windows, Mac"
   },
   {
     "family": "Raanana",
     "variants": "Regular, Bold",
-    "script": "Hebrew"
+    "script": "Hebrew",
+    "install_mac": true
   },
   {
     "family": "Raavi",
     "variants": "Regular, Bold",
     "script": "Gurmukhi",
-    "version": "XP"
+    "version_windows": "XP"
   },
   {
     "family": "Rod",
     "variants": "Regular",
     "script": "Hebrew",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "ST FangSong",
     "variants": "Regular",
-    "script": "Simplified Chinese"
+    "script": "Simplified Chinese",
+    "install_mac": true
   },
   {
     "family": "ST Heiti",
     "variants": "Light, Regular",
-    "script": "Simplified Chinese"
+    "script": "Simplified Chinese",
+    "install_mac": true
   },
   {
     "family": "ST Kaiti",
     "variants": "Regular",
-    "script": "Simplified Chinese"
+    "script": "Simplified Chinese",
+    "install_mac": true
   },
   {
     "family": "ST Song",
     "variants": "Regular",
-    "script": "Simplified Chinese"
+    "script": "Simplified Chinese",
+    "install_mac": true
   },
   {
     "family": "Sakkal Majalla",
     "variants": "Regular, Bold",
     "script": "Arabic",
-    "version": "7"
+    "version_windows": "7"
   },
   {
     "family": "Sand",
     "variants": "Regular",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "Sathu",
     "variants": "Regular",
-    "script": "Thai"
+    "script": "Thai",
+    "install_mac": true
   },
   {
     "family": "Segoe Print",
     "variants": "Regular, Bold",
     "script": "Latin/Greek/Cyrillic",
-    "version": "Vista"
+    "version_windows": "Vista"
   },
   {
     "family": "Segoe Script",
     "variants": "Regular, Bold",
     "script": "Latin/Greek/Cyrillic",
-    "version": "Vista"
+    "version_windows": "Vista"
   },
   {
-    "family": "Segoe UI Historic[6]",
+    "family": "Segoe UI Historic",
+    "category": "sans-serif",
     "variants": "Regular",
     "script": "Historic scripts",
-    "version": "10"
+    "version_windows": "10"
   },
   {
     "family": "Segoe UI Symbol",
+    "category": "sans-serif",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic",
-    "version": "7"
+    "version_windows": "7"
   },
   {
-    "family": "Segoe UI v5.00[3]",
+    "family": "Segoe UI v5.00",
+    "category": "sans-serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic, Arabic",
-    "version": "Vista"
+    "version_windows": "Vista"
   },
   {
-    "family": "Segoe UI v5.01[4]",
+    "family": "Segoe UI v5.01",
+    "category": "sans-serif",
     "variants": "Light, Semibold, plus previous faces",
     "script": "Latin/Greek/Cyrillic, Arabic",
-    "version": "7"
+    "version_windows": "7"
   },
   {
-    "family": "Segoe UI v5.27[5]",
+    "family": "Segoe UI v5.27",
+    "category": "sans-serif",
     "variants": "Light Italic, Semibold Italic, Semilight, Semilight Italic plus previous faces",
     "script": "Latin/Greek/Cyrillic, Arabic",
-    "version": "8"
+    "version_windows": "8"
   },
   {
     "family": "Seoul",
     "variants": "Regular",
-    "script": "Korean"
+    "script": "Korean",
+    "install_mac": true
   },
   {
     "family": "Shin Myungjo Neue",
     "variants": "Regular",
-    "script": "Korean"
+    "script": "Korean",
+    "install_mac": true
   },
   {
     "family": "Shonar Bangla",
     "variants": "Regular, Bold",
     "script": "Bengali",
-    "version": "7"
+    "version_windows": "7"
   },
   {
     "family": "Shruti",
     "variants": "Regular, Bold",
     "script": "Gujarati",
-    "version": "XP"
+    "version_windows": "XP"
   },
   {
     "family": "Silom",
     "variants": "Regular",
-    "script": "Thai"
+    "script": "Thai",
+    "install_mac": true
   },
   {
     "family": "SimHei",
     "variants": "Monospaced",
     "script": "Simplified Chinese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "SimKai",
     "variants": "Monospaced",
     "script": "Simplified Chinese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "SimSun",
     "variants": "Proportional",
     "script": "Simplified Chinese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "SimSun-ExtB",
     "variants": "Monospaced",
     "script": "Simplified Chinese",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Simplified Arabic",
     "variants": "Regular, Bold, Monospaced",
     "script": "Arabic",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Skia",
     "variants": "Regular",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "Song",
     "variants": "Regular",
-    "script": "Simplified Chinese"
+    "script": "Simplified Chinese",
+    "install_mac": true
   },
   {
     "family": "Sylfaen",
     "variants": "Regular",
     "script": "Armenian, Georgian",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Symbol",
     "variants": "Regular",
-    "script": ""
-  },
-  {
-    "family": "Symbol",
-    "variants": "Regular",
-    "script": "",
-    "version": "3.1"
+    "version_windows": "3.1",
+    "platform": "Windows, Mac"
   },
   {
     "family": "Tae Graphic",
     "variants": "Regular",
-    "script": "Korean"
+    "script": "Korean",
+    "install_mac": true
   },
   {
     "family": "Tahoma",
+    "category": "sans-serif",
     "variants": "Regular, Bold",
     "script": "Latin/Greek/Cyrillic, Arabic, Hebrew, Thai",
-    "version": "95"
-  },
-  {
-    "family": "Tahoma",
-    "variants": "Light, Regular, Bold",
-    "script": "Bundled with Windows"
+    "version_windows": "95",
+    "install_windows": 99.95,
+    "install_mac": 91.71
   },
   {
     "family": "Techno",
     "variants": "Regular",
-    "script": "Classic only"
+    "script": "Classic only",
+    "install_mac": true
   },
   {
     "family": "Textile",
     "variants": "Regular",
-    "script": "Classic (and iDVD)"
+    "script": "Classic (and iDVD)",
+    "install_mac": true
   },
   {
     "family": "Thonburi",
     "variants": "Regular",
-    "script": "Thai"
+    "script": "Thai",
+    "install_mac": true
   },
   {
     "family": "Times",
+    "category": "serif",
     "variants": "Regular, Italic, Bold, Bold Italic",
-    "script": ""
-  },
-  {
-    "family": "Times CY",
-    "variants": "Regular, Italic, Bold, Bold Italic",
-    "script": "Cyrillic; removed from 10.4"
+    "install_mac": true
   },
   {
     "family": "Times New Roman",
+    "category": "serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic, Arabic, Hebrew",
-    "version": "3.1"
-  },
-  {
-    "family": "Times New Roman",
-    "variants": "Regular, Italic, Bold, Bold Italic",
-    "script": "Bundled with Windows"
+    "version_windows": "3.1",
+    "install_windows": 99.67,
+    "install_mac": 97.48
   },
   {
     "family": "Traditional Arabic",
     "variants": "Regular, Bold",
     "script": "Arabic",
-    "version": "2000"
+    "version_windows": "2000"
   },
   {
     "family": "Trebuchet MS",
-    "variants": "Regular, Italic, Bold, Bold Italic",
-    "script": "Bundled with Windows"
-  },
-  {
-    "family": "Trebuchet MS",
+    "category": "sans-serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic",
-    "version": "2000"
+    "version_windows": "2000",
+    "install_windows": 99.67,
+    "install_mac": 97.12
   },
   {
     "family": "Tunga",
     "variants": "Regular, Bold",
     "script": "Kannada",
-    "version": "XP"
+    "version_windows": "XP"
   },
   {
     "family": "Urdu Typesetting",
     "variants": "Regular",
     "script": "Arabic",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Utsaah",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Devanagari",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Vani",
     "variants": "Regular, Bold",
     "script": "Telugu",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Verdana",
-    "variants": "Regular, Italic, Bold, Bold Italic",
-    "script": "Bundled with Windows"
-  },
-  {
-    "family": "Verdana",
+    "category": "sans-serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic",
-    "version": "95"
+    "version_windows": "95",
+    "install_windows": 99.84,
+    "install_mac": 99.1
   },
   {
     "family": "Vijaya",
     "variants": "Regular, Bold",
     "script": "Tamil",
-    "version": ""
+    "install_windows": true
   },
   {
     "family": "Vrinda",
     "variants": "Regular, Bold",
     "script": "Bengali",
-    "version": "XP"
+    "version_windows": "XP"
   },
   {
     "family": "Webdings",
     "variants": "Regular",
-    "script": "",
-    "version": "98"
+    "version_windows": "98"
   },
   {
     "family": "Westminster",
     "variants": "Regular",
     "script": "Latin/Greek/Cyrillic",
-    "version": "98"
+    "version_windows": "98"
   },
   {
     "family": "Wingdings",
     "variants": "Regular",
-    "script": "",
-    "version": "3.1"
+    "version_windows": "3.1"
   },
   {
     "family": "Zapf Chancery",
     "variants": "Medium Italic",
-    "script": "Classic only"
+    "script": "Classic only",
+    "install_mac": true
   },
   {
     "family": "Zapf Dingbats",
     "variants": "Regular",
-    "script": ""
+    "install_mac": true
   },
   {
     "family": "Zapfino",
     "variants": "Regular",
-    "script": ""
+    "install_mac": true
   }
 ]

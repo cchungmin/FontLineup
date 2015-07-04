@@ -81,10 +81,25 @@
     var byId = {};
     var queuedWebFonts = [];
 
+    function setSystemFontInstall(font, platform) {
+      var notes = [];
+      var pCap = util.capitalize(platform);
+      var version = font.family['version_' + platform];
+      var install = font.family['install_' + platform] || !!version;
+      font['available_' + platform] = install;
+      notes.push('Font is available on ' + (typeof install === 'number' ? install + '% of ' : '') + pCap + '.');
+      if (version) {
+        notes.push('Available from ' + pCap + ' ' + version);
+      }
+      font['notes_' + platform] = notes.join(' ');
+    }
+
     function transformSystemFont(font) {
       font.loaded = true;
       font.display_variant = font.variant.replace(/Regular/i, '400').replace(/Bold/i, '700');
-      font.id = font.family + ':' + font.variant;
+      font.id = font.family.name + ':' + font.variant;
+      setSystemFontInstall(font, 'windows');
+      setSystemFontInstall(font, 'mac');
       return font;
     }
 
@@ -101,22 +116,23 @@
           font.display_variant = font.variant.replace(/(\d+)italic/, '$1 Italic');
       }
       font.fvd = (font.display_variant.match(/italic/i) ? 'i' : 'n') + (font.display_variant.charAt(0));
-      font.id = font.family + ':' + font.fvd;
+      font.id = font.family.name + ':' + font.fvd;
       return font;
     }
 
     function appendFonts(fontFamilies, transformFn) {
       fontFamilies.forEach(function(family, i) {
+        family.name = family.family;
         var variants = family.variants;
         if (typeof variants === 'string') {
           variants = variants.split(/,\s*/);
         }
         variants.forEach(function(variant) {
           var font = transformFn({
-            family: family.family,
+            family: family,
             variant: variant
           });
-          font.name = family.family + ' ' + font.display_variant;
+          font.name = family.name + ' ' + font.display_variant;
           all.push(font);
           byId[font.id] = font;
         });
@@ -137,7 +153,7 @@
 
     function sortAll() {
       all.sort(function(a, b) {
-        var result = util.alphanumericSort(a.family, b.family);
+        var result = util.alphanumericSort(a.family.name, b.family.name);
         if (result === 0) {
           var aVariant = a.display_variant || a.variant;
           var bVariant = b.display_variant || b.variant;
@@ -183,7 +199,7 @@
         },
         google: {
           families: queuedWebFonts.map(function(font) {
-            return font.family + ':' + font.variant;
+            return font.family.name + ':' + font.variant;
           })
         }
       });
@@ -200,7 +216,7 @@
     }
 
     function getPostscriptFamilyName(font) {
-      var postscriptFamily = font.family.replace(/\s/g, '');
+      var postscriptFamily = font.family.name.replace(/\s/g, '');
       var postscriptFace = font.variant.replace(/[\s-]/g, '');
       return postscriptFamily + (postscriptFace == 'Regular' ? '' : '-' + postscriptFace);
     }
@@ -215,7 +231,7 @@
           return {
             // Looks like quotation marks are needed for JQLite, even though
             // the CSS is valid without them.
-            'font-family': "'" + font.family + "'",
+            'font-family': "'" + font.family.name + "'",
             'font-weight': getWeightForVariant(font.variant),
             'font-style': getStyleForVariant(font.variant)
           };

@@ -38,13 +38,26 @@
                on-scroll-enter="queueWebFont(font)"
                scroll-padding="50"
                ng-click="addFont(font)">
+            <a href="https://www.google.com/fonts#QuickUsePlace:quickUse/Family:{{font.family.name}}"
+               target="_blank"
+               class="font-tag google-font"
+               title="Google Fonts API (click to view)"
+               ng-if="isGoogleFont(font)">
+              <img width="14" height="14" src="icons/google.svg" alt="Google Fonts">
+            </a>
+            <div class="font-tag windows-font" ng-if="font.available_windows" title="{{font.notes_windows}}">
+              <img width="14" height="14" src="icons/windows.svg" alt="Windows">
+            </div>
+            <div class="font-tag mac-font" ng-if="font.available_mac" title="{{font.notes_mac}}">
+              <img width="14" height="14" src="icons/mac.svg" alt="Mac">
+            </div>
+            <div class="font-tag font-error" ng-if="font.error" title="Font Failed to Load">E</div>
+            <div class="font-loading-bar"></div>
+
             <h6 class="font-name" ng-style="getStyleForFont(font)">
               <span ng-if="textInList">{{text}}</span>
               <span ng-if="!textInList">{{font.name}}</span>
             </h6>
-            <div class="font-tag" ng-if="isGoogleFont(font)" title="Google Fonts API">G</div>
-            <div class="font-tag font-error" ng-if="font.error" title="Font Failed to Load">E</div>
-            <div class="font-loading-bar"></div>
           </div>
         </div>
       </fieldset>
@@ -102,7 +115,7 @@
           <div class="selected-font-name">
             <a target="_blank"
                class="hover-link"
-               ng-href="https://www.google.com/fonts#QuickUsePlace:quickUse/Family:{{font.family}}"
+               ng-href="https://www.google.com/fonts#QuickUsePlace:quickUse/Family:{{font.family.name}}"
                ng-if="isGoogleFont(font)">{{font.name}}</a>
             <span ng-if="!isGoogleFont(font)">{{font.name}}</span>
           </div>

@@ -304,17 +304,21 @@ header .icon {
 }
 
 .font-tag {
-  position: absolute;
-  right: 0;
-  top: 5px;
+  float: right;
   width: 15px;
   height: 15px;
-  line-height: 15px;
   border-radius: 100%;
-  font-size: 8px;
-  background-color: #3b78a8;
   text-align: center;
-  color: rgba(255,255,255,.6);
+  margin: 3px 0 0 3px;
+  font-size: 10px;
+  line-height: 14px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.font-tag.google-font {
+  font-family: serif;
+  font-size: 14px;
 }
 
 .font-tag.font-error {
