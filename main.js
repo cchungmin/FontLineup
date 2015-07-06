@@ -4,13 +4,15 @@
 
   mod.controller('FontListController', function($scope, Fonts, Storage, util) {
 
+    var WEB_THRESHOLD = 50;
+
     function digest() {
       $scope.$digest();
     }
 
     util.merge($scope, Fonts);
 
-    Storage.setupAttribute($scope, 'text', 'Hi there');
+    Storage.setupAttribute($scope, 'text', 'Sample Text');
     Storage.setupAttribute($scope, 'side', 'right');
     Storage.setupAttribute($scope, 'size', 'auto');
     Storage.setupAttribute($scope, 'theme', 'dark');
@@ -19,14 +21,27 @@
     Storage.setupAttribute($scope, 'search', '');
 
     $scope.fontListFilter = function(font) {
-      if (!$scope.search) {
+      if ($scope.search) {
+        try {
+          if (!font.name.match(RegExp($scope.search, 'i'))) {
+            return false;
+          }
+        } catch(e) {
+          if (font.name.indexOf($scope.search) === -1) {
+            return false;
+          }
+        }
+      }
+      if ($scope.web && font.family.install_mac > WEB_THRESHOLD && font.family.install_windows > WEB_THRESHOLD) {
+        return true;
+      } else if (font.available_windows && $scope.windows) {
+        return true;
+      } else if (font.available_mac && $scope.mac) {
+        return true;
+      } else if (Fonts.isGoogleFont(font) && $scope.google) {
         return true;
       }
-      try {
-        return font.name.match(RegExp($scope.search, 'i'));
-      } catch(e) {
-        return font.name.indexOf($scope.search) !== -1;
-      }
+      return false;
     }
 
     $scope.addFont = function(font) {

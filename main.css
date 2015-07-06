@@ -103,7 +103,7 @@ html.bottom h1 {
 
 html.top .sample-text-field,
 html.bottom .sample-text-field {
-  margin-left: 35px;
+  margin-left: 60px;
 }
 
 /* -------------------------] Shared [------------------------*/
@@ -212,16 +212,11 @@ header h1 {
   margin-bottom: .5em;
 }
 
-header .icon {
-  width: 30px;
-  height: 30px;
-}
-
 .text {
   width: 100%;
   border: none;
   border-radius: 4px;
-  background-color: #4c687d;
+  background-color: rgba(255,255,255,.12);
   color: rgba(255,255,255,.8);
   padding: 5px 7px;
   font-size: 14px;
@@ -231,45 +226,87 @@ header .icon {
   color: rgba(0,0,0,.5);
 }
 
-/* -------------------------] Side Buttons [------------------------*/
+/* -------------------------] Side Panel [------------------------*/
 
 
-.side-buttons {
+.side-panel {
   position: absolute;
   top: 10px;
   left: 10px;
-  width: 21px;
-  height: 21px;
 }
 
-.side-buttons div {
+.move-buttons {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  margin-right: 3px;
+}
+
+.move-buttons div {
   position: absolute;
   cursor: pointer;
   border: 5px solid transparent;
 }
 
-.side-buttons .up {
+.move-buttons .up {
   top: -5px;
-  left: 6px;
+  left: 5px;
   border-bottom-color: rgba(255,255,255,.6);
 }
 
-.side-buttons .right {
-  top: 6px;
-  right: -6px;
+.move-buttons .right {
+  top: 5px;
+  right: -5px;
   border-left-color: rgba(255,255,255,.6);
 }
 
-.side-buttons .down {
-  bottom: -6px;
-  left: 6px;
+.move-buttons .down {
+  bottom: -5px;
+  left: 5px;
   border-top-color: rgba(255,255,255,.6);
 }
 
-.side-buttons .left {
-  top: 6px;
+.move-buttons .left {
+  top: 5px;
   left: -5px;
   border-right-color: rgba(255,255,255,.6);
+}
+
+/* -------------------------] Font List Options [------------------------*/
+
+.text-in-list {
+  display: inline-block;
+  font-family: serif;
+  font-size: 15px;
+  font-weight: bold;
+  margin-left: 5px;
+  width: 19px;
+  height: 19px;
+  line-height: 19px;
+  border-radius: 2px;
+  color: rgba(255,255,255,.2);
+}
+
+.text-in-list:hover {
+  color: rgba(255,255,255,.6) !important;
+}
+
+.text-in-list.active {
+  color: #fff;
+}
+
+.platform-filter {
+  font-size: 11px;
+  font-weight: bold;
+  padding: 4px 8px;
+  color: #f9e9b9;
+  background-color: rgba(255,255,255,.3);
+  border-radius: 2px;
+  opacity: .2;
+}
+
+.platform-filter.active {
+  opacity: 1;
 }
 
 /* -------------------------] Font List [------------------------*/
@@ -371,7 +408,7 @@ header .icon {
   text-align: center;
   background-color: #ededed;
   margin: 1px;
-  font-size: 60px;
+  font-size: 120px;
 }
 
 .selected-font-text {

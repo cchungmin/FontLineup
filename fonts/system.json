@@ -483,7 +483,8 @@
     "family": "FangSong",
     "variants": "Regular",
     "script": "Simplified Chinese",
-    "platform": "Windows, Mac"
+    "install_mac": true,
+    "install_windows": true
   },
   {
     "family": "FrankRuehl",
@@ -1212,7 +1213,8 @@
     "family": "Plantagenet Cherokee",
     "variants": "Regular",
     "script": "Cherokee",
-    "platform": "Windows, Mac"
+    "install_mac": true,
+    "install_windows": true
   },
   {
     "family": "Raanana",
