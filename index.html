@@ -25,12 +25,14 @@
       </fieldset>
       <fieldset class="font-list-field flex-shrink flex-grow">
         <div>
-          <span class="inline-block hidden spinner" ng-class="{visible: searchLoading}">
-            <span class="rect1"></span>
-            <span class="rect2"></span>
-            <span class="rect3"></span>
+          <span class="inline-block">
+            <div class="hidden spinner" ng-class="{visible: searchLoading}">
+              <span class="rect1"></span>
+              <span class="rect2"></span>
+              <span class="rect3"></span>
+            </div>
           </span>
-          <input type="inline-block search"
+          <input type="search"
                  placeholder="Filter..."
                  ng-model="search"
                  ng-keydown="searchLoading = true"
@@ -40,7 +42,12 @@
             ng-class="{active: textInList}"
             ng-click="textInList = !textInList">T</span>
         </div>
-        <div class="font-list">
+        <div class="font-list" ng-class="{'exact-center': !fonts}">
+          <div class="spinner large-spinner" ng-if="!fonts">
+            <span class="rect1"></span>
+            <span class="rect2"></span>
+            <span class="rect3"></span>
+          </div>
           <div class="clickable font-list-item"
                ng-repeat="font in fonts | filter:fontListFilter"
                ng-class="{loading: font.loading, loaded: font.loaded, error: font.error}"
@@ -71,10 +78,22 @@
         </div>
       </fieldset>
       <fieldset>
-        <span class="clickable inline-block platform-filter" ng-class="{active: windows}" ng-click="windows = !windows;">Windows</span>
-        <span class="clickable inline-block platform-filter" ng-class="{active: mac}" ng-click="mac = !mac;">Mac</span>
-        <span class="clickable inline-block platform-filter" ng-class="{active: google}" ng-click="google = !google;">Google</span>
-        <span class="clickable inline-block platform-filter" ng-class="{active: web}" ng-click="web = !web;">Web</span>
+        <span class="clickable inline-block platform-filter"
+              title="Fonts available on Windows (hover over icon to see install rate if available)."
+              ng-class="{active: windows}"
+              ng-click="windows = !windows;">Windows</span>
+        <span class="clickable inline-block platform-filter"
+              title="Fonts available on Mac (hover over icon to see install rate if available)."
+              ng-class="{active: mac}"
+              ng-click="mac = !mac;">Mac</span>
+        <span class="clickable inline-block platform-filter"
+              title="Fonts available through the Google Fonts API"
+              ng-class="{active: google}"
+              ng-click="google = !google;">Google</span>
+        <span class="clickable inline-block platform-filter"
+              title="&quot;Web safe&quot; fonts. For the purposes of this tool, this term is a proxy for fonts that have an install rate of over {{safeThreshold}}% on both Mac and Windows. However the only truly safe fonts are those like serif, sans-serif, etc. Fallbacks should always be used."
+              ng-class="{active: safe}"
+              ng-click="safe = !safe;">Safe</span>
       </fieldset>
       <fieldset>
         <select ng-model="size" title="Font Size">

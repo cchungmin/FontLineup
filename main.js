@@ -4,7 +4,7 @@
 
   mod.controller('FontListController', function($scope, Fonts, Storage, util) {
 
-    var WEB_THRESHOLD = 50;
+    $scope.safeThreshold = 80;
 
     function digest() {
       $scope.$digest();
@@ -20,6 +20,11 @@
     Storage.setupAttribute($scope, 'textInList', false);
     Storage.setupAttribute($scope, 'search', '');
 
+    Storage.setupAttribute($scope, 'mac', true);
+    Storage.setupAttribute($scope, 'windows', true);
+    Storage.setupAttribute($scope, 'google', true);
+    Storage.setupAttribute($scope, 'safe', true);
+
     $scope.fontListFilter = function(font) {
       if ($scope.search) {
         try {
@@ -32,7 +37,7 @@
           }
         }
       }
-      if ($scope.web && font.family.install_mac > WEB_THRESHOLD && font.family.install_windows > WEB_THRESHOLD) {
+      if ($scope.safe && font.family.install_mac > $scope.safeThreshold && font.family.install_windows > $scope.safeThreshold) {
         return true;
       } else if (font.available_windows && $scope.windows) {
         return true;

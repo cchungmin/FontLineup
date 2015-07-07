@@ -57,7 +57,6 @@ p {
 }
 
 input[type="text"] {
-  //background-color: rgba(255,255,255,.9);
   font-size: 16px;
   padding: .2em .5em;
   border-radius: 3px;
@@ -138,6 +137,11 @@ html.left .flex-gutter {
   flex-direction: column;
 }
 
+.exact-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .clickable {
   cursor: pointer;
@@ -222,6 +226,10 @@ header h1 {
   font-size: 14px;
 }
 
+input[type="search"] {
+  margin-left: 3px;
+}
+
 ::-webkit-input-placeholder {
   color: rgba(0,0,0,.5);
 }
@@ -299,8 +307,8 @@ header h1 {
   font-size: 11px;
   font-weight: bold;
   padding: 4px 8px;
-  color: #f9e9b9;
-  background-color: rgba(255,255,255,.3);
+  color: #fff;
+  background-color: rgba(255,255,255,.15);
   border-radius: 2px;
   opacity: .2;
 }
@@ -446,19 +454,17 @@ body.dark .selected-font-remove:hover {
 /* -------------------------] Spinner [------------------------*/
 
 .spinner {
-  display: inline-block;
+  display: flex;
+  width: 15px;
   height: 15px;
-  margin: 1px 5px -15px;
-  text-align: center;
   font-size: 10px;
 }
 
 .spinner > span {
+  flex-grow: 1;
   background-color: rgba(255,255,255,.4);
   height: 100%;
-  width: 3px;
-  margin-left: -1px;
-  display: inline-block;
+  margin: 1px;
   -webkit-animation: stretchdelay 1.2s infinite ease-in-out;
   animation: stretchdelay 1.2s infinite ease-in-out;
 }
@@ -481,6 +487,11 @@ body.dark .selected-font-remove:hover {
 .spinner .rect5 {
   -webkit-animation-delay: -0.8s;
   animation-delay: -0.8s;
+}
+
+.large-spinner {
+  width: 30px;
+  height: 30px;
 }
 
 @-webkit-keyframes stretchdelay {
