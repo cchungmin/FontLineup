@@ -108,6 +108,7 @@
   },
   {
     "family": "Arial",
+    "postscript_variant_suffix": "MT",
     "category": "sans-serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin, Greek, Cyrillic, Arabic, Hebrew",
@@ -305,6 +306,7 @@
   },
   {
     "family": "Comic Sans",
+    "postscript_family_suffix": "MS",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic",
     "version_windows": "95",
@@ -388,6 +390,8 @@
   },
   {
     "family": "Courier New",
+    "postscript_family_suffix": "PS",
+    "postscript_variant_suffix": "MT",
     "category": "monospace",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic, Arabic, Hebrew",
@@ -1446,6 +1450,8 @@
   },
   {
     "family": "Times New Roman",
+    "postscript_family_suffix": "PS",
+    "postscript_variant_suffix": "MT",
     "category": "serif",
     "variants": "Regular, Bold, Italic, Bold Italic",
     "script": "Latin/Greek/Cyrillic, Arabic, Hebrew",

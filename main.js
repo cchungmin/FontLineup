@@ -97,6 +97,11 @@
     var GOOGLE_FONTS_API_URL = 'fonts/google.json'
     var SYSTEM_FONTS_URL = 'fonts/system.json';
 
+    var POSTSCRIPT_EXCEPTIONS = {
+      'ArialBlack': 'Arial-Black',
+      'TrebuchetMS-BoldItalic': 'Trebuchet-BoldItalic',
+    }
+
     var all = [];
     var byId = {};
     var queuedWebFonts = [];
@@ -109,7 +114,7 @@
       font['available_' + platform] = install;
       notes.push('Font is available on ' + (typeof install === 'number' ? install + '% of ' : '') + pCap + '.');
       if (version) {
-        notes.push('Available from ' + pCap + ' ' + version);
+        notes.push('Available from ' + pCap + ' ' + version + '.');
       }
       font['notes_' + platform] = notes.join(' ');
     }
@@ -236,9 +241,14 @@
     }
 
     function getPostscriptFamilyName(font) {
-      var postscriptFamily = font.family.name.replace(/\s/g, '');
-      var postscriptFace = font.variant.replace(/[\s-]/g, '');
-      return postscriptFamily + (postscriptFace == 'Regular' ? '' : '-' + postscriptFace);
+      var family = font.family.name.replace(/\s/g, '');
+      var variant = font.variant.replace(/[\s-]|Regular/gi, '');
+
+      var fSuffix = font.family.postscript_family_suffix || '';
+      var vSuffix = font.family.postscript_variant_suffix || '';
+
+      var ps = family + fSuffix + (variant ? '-' + variant : '') + vSuffix;
+      return POSTSCRIPT_EXCEPTIONS[ps] || ps;
     }
 
     var callWebFontLoad = util.debounce(loadAllWebFonts, 500);
