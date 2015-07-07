@@ -94,7 +94,7 @@
   mod.service('Fonts', function($http, $q, $rootScope, $timeout, util) {
 
     var GOOGLE_FONTS_API_URL = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyApru_pt7gpUGUzfvCkQj8RpS9jGGhkttQ'
-    var GOOGLE_FONTS_API_URL = 'fonts/google.json'
+    //var GOOGLE_FONTS_API_URL = 'fonts/google.json'
     var SYSTEM_FONTS_URL = 'fonts/system.json';
 
     var POSTSCRIPT_EXCEPTIONS = {
