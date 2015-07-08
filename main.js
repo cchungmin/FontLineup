@@ -80,6 +80,7 @@
     $scope.$on('fontActivated', digest);
 
     $scope.$watch('search', function(set) {
+      $scope.$emit('fontsFiltered');
       $scope.searchLoading = false;
     });
 
@@ -412,6 +413,9 @@
     }
 
     function checkWaypoints() {
+      if (!parent || waypoints.length === 0) {
+        return;
+      }
       var scrollTop = parent.scrollTop;
       var scrollBottom = scrollTop + parent.offsetHeight;
       if (waypoints.length === 0 || scrollBottom === 0) {
@@ -438,7 +442,8 @@
 
     var deferredCheckWaypoints = util.debounce(checkWaypoints, 500);
 
-    $rootScope.$on('fontsLoaded', checkWaypoints);
+    $rootScope.$on('fontsLoaded', deferredCheckWaypoints);
+    $rootScope.$on('fontsFiltered', deferredCheckWaypoints);
     angular.element($window).on('resize', checkWaypoints);
 
     return {
