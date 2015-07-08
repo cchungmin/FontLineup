@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="App" ng-controller="FontListController" class="{{side}}">
+<html ng-app="App" ng-controller="FontListController" class="{{panelSide}}" ng-class="{'panel-hidden': panelClosed}">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,120 +7,131 @@
     <link rel="stylesheet" href="main.css">
   </head>
   <body ng-cloak ng-class="{dark: theme == 'dark'}" class="flex-layout">
-    <header class="flex-gutter">
-      <div class="side-panel">
-        <div class="move-buttons inline-block">
-          <div class="up"    ng-click="side = 'top'" title="Move panel to top"></div>
-          <div class="right" ng-click="side = 'right'" title="Move panel to right"></div>
-          <div class="down"  ng-click="side = 'bottom'" title="Move panel to bottom"></div>
-          <div class="left"  ng-click="side = 'left'" title="Move panel to left"></div>
+    <header class="full-height" ng-click="panelClosed = false">
+      <div class="em-padding flex-gutter full-height">
+        <div class="side-panel">
+
+          <table class="move-buttons">
+            <tr>
+              <td rowspan="3" class="left-button" ng-click="panelSide = 'left'"></td>
+              <td class="up-button" ng-click="panelSide = 'top'"></td>
+              <td rowspan="3" class="right-button" ng-click="panelSide = 'right'"></td>
+            </tr>
+            <tr>
+              <td class="close-button" ng-click="panelClosed = true" no-click-bubble></td>
+            </tr>
+            <tr>
+              <td class="down-button" ng-click="panelSide = 'bottom'"></td>
+            </tr>
+          </table>
+
+          <div class="theme-button clickable inline-block" ng-click="theme = theme == 'dark' ? 'light' : 'dark'" title="{{theme|capitalize}} Theme">
+            <img width="20" height="20" class="centered icon" ng-src="icons/{{theme}}-theme.svg">
+          </div>
         </div>
-        <div class="clickable inline-block" ng-click="theme = theme == 'dark' ? 'light' : 'dark'" title="{{theme|capitalize}} Theme">
-          <img width="20" height="20" class="centered icon" ng-src="icons/{{theme}}-theme.svg">
-        </div>
-      </div>
-      <h1>Font Lineup</h1>
-      <fieldset class="sample-text-field">
-        <textarea id="text" class="text" ng-model="text" placeholder="Sample Text"></textarea>
-      </fieldset>
-      <fieldset class="font-list-field flex-shrink flex-grow">
-        <div>
-          <span class="inline-block">
-            <div class="hidden spinner" ng-class="{visible: searchLoading}">
+        <h1>Font Lineup</h1>
+        <fieldset class="sample-text-field">
+          <textarea id="text" class="text" ng-model="text" placeholder="Sample Text"></textarea>
+        </fieldset>
+        <fieldset class="font-list-field flex-shrink flex-grow">
+          <div>
+            <span class="inline-block">
+              <div class="hidden spinner" ng-class="{visible: searchLoading}">
+                <span class="rect1"></span>
+                <span class="rect2"></span>
+                <span class="rect3"></span>
+              </div>
+            </span>
+            <input type="search"
+                   placeholder="Filter..."
+                   ng-model="search"
+                   ng-keydown="searchLoading = true"
+                   ng-model-options="{debounce: 500}">
+            <span class="clickable text-in-list"
+              title="Display sample text in font list"
+              ng-class="{active: textInList}"
+              ng-click="textInList = !textInList">T</span>
+          </div>
+          <div class="font-list" ng-class="{'exact-center': !fonts}">
+            <div class="spinner large-spinner" ng-if="!fonts">
               <span class="rect1"></span>
               <span class="rect2"></span>
               <span class="rect3"></span>
             </div>
-          </span>
-          <input type="search"
-                 placeholder="Filter..."
-                 ng-model="search"
-                 ng-keydown="searchLoading = true"
-                 ng-model-options="{debounce: 500}">
-          <span class="clickable text-in-list"
-            title="Display sample text in font list"
-            ng-class="{active: textInList}"
-            ng-click="textInList = !textInList">T</span>
-        </div>
-        <div class="font-list" ng-class="{'exact-center': !fonts}">
-          <div class="spinner large-spinner" ng-if="!fonts">
-            <span class="rect1"></span>
-            <span class="rect2"></span>
-            <span class="rect3"></span>
-          </div>
-          <div class="clickable font-list-item"
-               ng-repeat="font in fonts | filter:fontListFilter"
-               ng-class="{loading: font.loading, loaded: font.loaded, error: font.error}"
-               on-scroll-enter="queueWebFont(font)"
-               scroll-padding="50"
-               ng-click="addFont(font)">
-            <a href="https://www.google.com/fonts#QuickUsePlace:quickUse/Family:{{font.family.name}}"
-               target="_blank"
-               class="font-tag google-font"
-               title="Google Fonts API (click to view)"
-               ng-if="isGoogleFont(font)">
-              <img width="14" height="14" src="icons/google.svg" alt="Google Fonts">
-            </a>
-            <div class="font-tag windows-font" ng-if="font.available_windows" title="{{font.notes_windows}}">
-              <img width="14" height="14" src="icons/windows.svg" alt="Windows">
-            </div>
-            <div class="font-tag mac-font" ng-if="font.available_mac" title="{{font.notes_mac}}">
-              <img width="14" height="14" src="icons/mac.svg" alt="Mac">
-            </div>
-            <div class="font-tag font-error" ng-if="font.error" title="Font Failed to Load">E</div>
-            <div class="font-loading-bar"></div>
+            <div class="clickable font-list-item"
+                 ng-repeat="font in fonts | filter:fontListFilter"
+                 ng-class="{loading: font.loading, loaded: font.loaded, error: font.error}"
+                 on-scroll-enter="queueWebFont(font)"
+                 scroll-padding="50"
+                 ng-click="addFont(font)">
+              <a href="https://www.google.com/fonts#QuickUsePlace:quickUse/Family:{{font.family.name}}"
+                 target="_blank"
+                 class="font-tag google-font"
+                 title="Google Fonts API (click to view)"
+                 ng-if="isGoogleFont(font)">
+                <img width="14" height="14" src="icons/google.svg" alt="Google Fonts">
+              </a>
+              <div class="font-tag windows-font" ng-if="font.available_windows" title="{{font.notes_windows}}">
+                <img width="14" height="14" src="icons/windows.svg" alt="Windows">
+              </div>
+              <div class="font-tag mac-font" ng-if="font.available_mac" title="{{font.notes_mac}}">
+                <img width="14" height="14" src="icons/mac.svg" alt="Mac">
+              </div>
+              <div class="font-tag font-error" ng-if="font.error" title="Font Failed to Load">E</div>
+              <div class="font-loading-bar"></div>
 
-            <h6 class="font-name" ng-style="getStyleForFont(font)">
-              <span ng-if="textInList">{{text}}</span>
-              <span ng-if="!textInList">{{font.name}}</span>
-            </h6>
+              <h6 class="font-name" ng-style="getStyleForFont(font)">
+                <span ng-if="textInList">{{text}}</span>
+                <span ng-if="!textInList">{{font.name}}</span>
+              </h6>
+            </div>
           </div>
-        </div>
-      </fieldset>
-      <fieldset>
-        <span class="clickable inline-block platform-filter"
-              title="Fonts available on Windows (hover over icon to see install rate if available)."
-              ng-class="{active: windows}"
-              ng-click="windows = !windows;">Windows</span>
-        <span class="clickable inline-block platform-filter"
-              title="Fonts available on Mac (hover over icon to see install rate if available)."
-              ng-class="{active: mac}"
-              ng-click="mac = !mac;">Mac</span>
-        <span class="clickable inline-block platform-filter"
-              title="Fonts available through the Google Fonts API"
-              ng-class="{active: google}"
-              ng-click="google = !google;">Google</span>
-        <span class="clickable inline-block platform-filter"
-              title="&quot;Web safe&quot; fonts. For the purposes of this tool, this term is a proxy for fonts that have an install rate of over {{safeThreshold}}% on both Mac and Windows. However the only truly safe fonts are those like serif, sans-serif, etc. Fallbacks should always be used."
-              ng-class="{active: safe}"
-              ng-click="safe = !safe;">Safe</span>
-      </fieldset>
-      <fieldset>
-        <select ng-model="size" title="Font Size">
-          <option value="auto">Auto</option>
-          <option value="6">6px</option>
-          <option value="8">8px</option>
-          <option value="9">9px</option>
-          <option value="10">10px</option>
-          <option value="11">11px</option>
-          <option value="12">12px</option>
-          <option value="14">14px</option>
-          <option value="16">16px</option>
-          <option value="18">18px</option>
-          <option value="20">20px</option>
-          <option value="24">24px</option>
-          <option value="28">28px</option>
-          <option value="32">32px</option>
-          <option value="36">36px</option>
-          <option value="40">40px</option>
-          <option value="44">44px</option>
-          <option value="48">48px</option>
-          <option value="56">56px</option>
-          <option value="64">64px</option>
-          <option value="72">72px</option>
-          <option value="96">96px</option>
-        </select>
-    </fieldset>
+        </fieldset>
+        <fieldset>
+          <span class="clickable inline-block platform-filter"
+                title="Fonts available on Windows (hover over icon to see install rate if available)."
+                ng-class="{active: windows}"
+                ng-click="windows = !windows;">Windows</span>
+          <span class="clickable inline-block platform-filter"
+                title="Fonts available on Mac (hover over icon to see install rate if available)."
+                ng-class="{active: mac}"
+                ng-click="mac = !mac;">Mac</span>
+          <span class="clickable inline-block platform-filter"
+                title="Fonts available through the Google Fonts API"
+                ng-class="{active: google}"
+                ng-click="google = !google;">Google</span>
+          <span class="clickable inline-block platform-filter"
+                title="&quot;Web safe&quot; fonts. For the purposes of this tool, this term is a proxy for fonts that have an install rate of over {{safeThreshold}}% on both Mac and Windows. However the only truly safe fonts are those like serif, sans-serif, etc. Fallbacks should always be used."
+                ng-class="{active: safe}"
+                ng-click="safe = !safe;">Safe</span>
+        </fieldset>
+        <fieldset>
+          <select ng-model="size" title="Font Size">
+            <option value="auto">Auto</option>
+            <option value="6">6px</option>
+            <option value="8">8px</option>
+            <option value="9">9px</option>
+            <option value="10">10px</option>
+            <option value="11">11px</option>
+            <option value="12">12px</option>
+            <option value="14">14px</option>
+            <option value="16">16px</option>
+            <option value="18">18px</option>
+            <option value="20">20px</option>
+            <option value="24">24px</option>
+            <option value="28">28px</option>
+            <option value="32">32px</option>
+            <option value="36">36px</option>
+            <option value="40">40px</option>
+            <option value="44">44px</option>
+            <option value="48">48px</option>
+            <option value="56">56px</option>
+            <option value="64">64px</option>
+            <option value="72">72px</option>
+            <option value="96">96px</option>
+          </select>
+        </fieldset>
+      </div>
     </header>
     <ul class="selected-list flex-gutter" text-fit-container>
       <li class="selected-font flex-grow" ng-repeat="font in selected | getFont track by $index">

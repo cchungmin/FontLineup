@@ -13,10 +13,11 @@
     util.merge($scope, Fonts);
 
     Storage.setupAttribute($scope, 'text', 'Sample Text');
-    Storage.setupAttribute($scope, 'side', 'right');
     Storage.setupAttribute($scope, 'size', 'auto');
     Storage.setupAttribute($scope, 'theme', 'dark');
     Storage.setupAttribute($scope, 'selected', []);
+    Storage.setupAttribute($scope, 'panelSide', 'right');
+    Storage.setupAttribute($scope, 'panelClosed', false);
     Storage.setupAttribute($scope, 'textInList', false);
     Storage.setupAttribute($scope, 'search', '');
 
@@ -411,11 +412,11 @@
     }
 
     function checkWaypoints() {
-      if (waypoints.length === 0) {
-        return;
-      }
       var scrollTop = parent.scrollTop;
       var scrollBottom = scrollTop + parent.offsetHeight;
+      if (waypoints.length === 0 || scrollBottom === 0) {
+        return;
+      }
       var i = 0;
       while (i < waypoints.length) {
         var w = waypoints[i];
@@ -532,4 +533,13 @@
     }
   });
 
+  mod.directive('noClickBubble', function() {
+    return {
+      link: function(scope, element) {
+        element.on('click', function(evt) {
+          evt.stopPropagation();
+        });
+      }
+    }
+  });
 })();

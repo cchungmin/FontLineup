@@ -105,6 +105,37 @@ html.bottom .sample-text-field {
   margin-left: 60px;
 }
 
+/* -------------------------] Hiding Panel [------------------------*/
+
+html.panel-hidden header {
+  cursor: pointer;
+  overflow: hidden;
+}
+
+html.panel-hidden header > * {
+  display: none;
+}
+
+html.left.panel-hidden header,
+html.right.panel-hidden header {
+  width: 1%;
+}
+
+html.left.panel-hidden .selected-list,
+html.right.panel-hidden .selected-list {
+  width: 99%;
+}
+
+html.top.panel-hidden header,
+html.bottom.panel-hidden header {
+  height: 2%;
+}
+
+html.top.panel-hidden .selected-list,
+html.bottom.panel-hidden .selected-list {
+  height: 98%;
+}
+
 /* -------------------------] Shared [------------------------*/
 
 .flex-layout,
@@ -151,6 +182,14 @@ html.left .flex-gutter {
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.em-padding {
+  padding: 1.5em;
 }
 
 .tabs {
@@ -206,7 +245,6 @@ header {
   background-color: rgba(0,20,30,.9);
   background-color: #2a292a;
   color: #97a5b0;
-  padding: 1em;
   text-align: center;
 }
 
@@ -239,45 +277,58 @@ input[type="search"] {
 
 .side-panel {
   position: absolute;
-  top: 10px;
-  left: 10px;
+  top: 5px;
+  left: 5px;
 }
 
 .move-buttons {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  margin-right: 3px;
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  border-collapse: collapse;
 }
 
-.move-buttons div {
-  position: absolute;
+.move-buttons td {
   cursor: pointer;
+}
+
+.move-buttons td:after {
+  content: '';
+  display: block;
   border: 5px solid transparent;
 }
 
-.move-buttons .up {
-  top: -5px;
-  left: 5px;
+.move-buttons .up-button:after {
+  margin-bottom: -1px;
   border-bottom-color: rgba(255,255,255,.6);
 }
 
-.move-buttons .right {
-  top: 5px;
-  right: -5px;
+.move-buttons .right-button:after {
+  margin-left: -1px;
   border-left-color: rgba(255,255,255,.6);
 }
 
-.move-buttons .down {
-  bottom: -5px;
-  left: 5px;
+.move-buttons .down-button:after {
+  margin-top: -1px;
   border-top-color: rgba(255,255,255,.6);
 }
 
-.move-buttons .left {
-  top: 5px;
-  left: -5px;
+.move-buttons .left-button:after {
+  margin-right: -1px;
   border-right-color: rgba(255,255,255,.6);
+}
+
+.move-buttons .close-button:after {
+  background-color: rgba(255,255,255,.6);
+  opacity: 0;
+}
+
+.move-buttons .close-button:hover:after {
+  opacity: 1;
+}
+
+.theme-button {
+  margin-top: 7px;
 }
 
 /* -------------------------] Font List Options [------------------------*/
