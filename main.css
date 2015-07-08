@@ -109,7 +109,10 @@ html.bottom .sample-text-field {
 
 html.panel-hidden header {
   cursor: pointer;
-  overflow: hidden;
+}
+
+html.panel-hidden header:hover {
+  background-color: #4a494a;
 }
 
 html.panel-hidden header > * {
@@ -242,10 +245,10 @@ html.left .flex-gutter {
 
 header {
   position: relative;
-  background-color: rgba(0,20,30,.9);
   background-color: #2a292a;
   color: #97a5b0;
   text-align: center;
+  transition: background-color 50ms linear 100ms;
 }
 
 header h1 {
