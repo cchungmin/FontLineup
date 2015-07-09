@@ -96,6 +96,7 @@
   mod.service('Fonts', function($http, $q, $rootScope, $timeout, util) {
 
     var GOOGLE_FONTS_API_URL = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyApru_pt7gpUGUzfvCkQj8RpS9jGGhkttQ'
+    var WEBFONT_LOADER_MAX_CONCURRENT = 10;
     //var GOOGLE_FONTS_API_URL = 'fonts/google.json'
     var SYSTEM_FONTS_URL = 'fonts/system.json';
 
@@ -208,10 +209,10 @@
       if (!queuedWebFonts.length) {
         return;
       }
+      var fontsToLoad = queuedWebFonts.slice(0, WEBFONT_LOADER_MAX_CONCURRENT);
+      queuedWebFonts = queuedWebFonts.slice(WEBFONT_LOADER_MAX_CONCURRENT);
       WebFont.load({
-        active: function() {
-          queuedWebFonts = [];
-        },
+        active: loadAllWebFonts,
         fontinactive: function(family, fvd) {
           var font = byId[family + ':' + fvd];
           font.loading = false;
@@ -225,7 +226,7 @@
           $rootScope.$broadcast('fontActivated');
         },
         google: {
-          families: queuedWebFonts.map(function(font) {
+          families: fontsToLoad.map(function(font) {
             return font.family.name + ':' + font.variant;
           })
         }
@@ -289,7 +290,7 @@
 
     this.queueWebFont = function(font) {
       if (isGoogleFont(font)) {
-        if (!font.loaded) {
+        if (!font.loaded && !font.loading) {
           font.loading = true;
           queuedWebFonts.push(font);
           callWebFontLoad();
