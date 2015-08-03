@@ -1315,14 +1315,14 @@
   {
     "family": "Segoe UI v5.01",
     "category": "sans-serif",
-    "variants": "Light, Semibold, plus previous faces",
+    "variants": "Light, Semibold",
     "script": "Latin/Greek/Cyrillic, Arabic",
     "version_windows": "7"
   },
   {
     "family": "Segoe UI v5.27",
     "category": "sans-serif",
-    "variants": "Light Italic, Semibold Italic, Semilight, Semilight Italic plus previous faces",
+    "variants": "Light Italic, Semibold Italic, Semilight, Semilight Italic",
     "script": "Latin/Greek/Cyrillic, Arabic",
     "version_windows": "8"
   },
