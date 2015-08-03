@@ -23,6 +23,7 @@
 
     Storage.setupAttribute($scope, 'mac', true);
     Storage.setupAttribute($scope, 'windows', true);
+    Storage.setupAttribute($scope, 'installed', true);
     Storage.setupAttribute($scope, 'google', true);
     Storage.setupAttribute($scope, 'safe', true);
 
@@ -40,6 +41,8 @@
       }
       if ($scope.safe && font.family.install_mac > $scope.safeThreshold && font.family.install_windows > $scope.safeThreshold) {
         return true;
+      } else if (font.installed && $scope.installed) {
+        return true;
       } else if (font.available_windows && $scope.windows) {
         return true;
       } else if (font.available_mac && $scope.mac) {
@@ -48,7 +51,7 @@
         return true;
       }
       return false;
-    }
+    };
 
     $scope.addFont = function(font) {
       $scope.selected.push(font.id);
@@ -56,13 +59,13 @@
 
     $scope.removeFont = function(index) {
       $scope.selected.splice(index, 1);
-    }
+    };
 
     $scope.removeAllFonts = function() {
       if (confirm('Sure about that?')) {
         $scope.selected = [];
       }
-    }
+    };
 
     $scope.getRandomFonts = function(limit) {
       var i = 0;
@@ -93,17 +96,18 @@
 
   });
 
+
   mod.service('Fonts', function($http, $q, $rootScope, $timeout, util) {
 
-    var GOOGLE_FONTS_API_URL = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyApru_pt7gpUGUzfvCkQj8RpS9jGGhkttQ'
+    var GOOGLE_FONTS_API_URL = 'https://www.googleapis.com/webfonts/v1/webfonts?key=AIzaSyApru_pt7gpUGUzfvCkQj8RpS9jGGhkttQ';
     var WEBFONT_LOADER_MAX_CONCURRENT = 8;
     //var GOOGLE_FONTS_API_URL = 'fonts/google.json'
     var SYSTEM_FONTS_URL = 'fonts/system.json';
 
     var POSTSCRIPT_EXCEPTIONS = {
       'ArialBlack': 'Arial-Black',
-      'TrebuchetMS-BoldItalic': 'Trebuchet-BoldItalic',
-    }
+      'TrebuchetMS-BoldItalic': 'Trebuchet-BoldItalic'
+    };
 
     var all = [];
     var byId = {};
@@ -122,9 +126,13 @@
       font['notes_' + platform] = notes.join(' ');
     }
 
+    function getDisplayVariant(variant) {
+      return variant.replace(/Regular/i, '400').replace(/Bold/i, '700');
+    }
+
     function transformSystemFont(font) {
       font.loaded = true;
-      font.display_variant = font.variant.replace(/Regular/i, '400').replace(/Bold/i, '700');
+      font.display_variant = getDisplayVariant(font.variant);
       font.id = font.family.name + ':' + font.variant;
       setSystemFontInstall(font, 'windows');
       setSystemFontInstall(font, 'mac');
@@ -149,7 +157,7 @@
     }
 
     function appendFonts(fontFamilies, transformFn) {
-      fontFamilies.forEach(function(family, i) {
+      fontFamilies.forEach(function(family) {
         family.name = family.family;
         var variants = family.variants;
         if (typeof variants === 'string') {
@@ -202,7 +210,7 @@
     }
 
     function isGoogleFont(font) {
-      return font.platform == 'Google Fonts';
+      return font.platform && font.platform == 'Google Fonts';
     }
 
     function loadAllWebFonts() {
@@ -244,15 +252,67 @@
     }
 
     function getPostscriptFamilyName(font) {
-      var family = font.family.name.replace(/\s/g, '');
+      var family = font.family.name;
       var variant = font.variant.replace(/[\s-]|Regular/gi, '');
 
       var fSuffix = font.family.postscript_family_suffix || '';
       var vSuffix = font.family.postscript_variant_suffix || '';
 
+      if (variant) {
+        // Only replace the spaces in the family
+        // name if there is a variant. This seems to
+        // trigger the most proper font renderings.
+        family = family.replace(/\s/g, '');
+      }
+
       var ps = family + fSuffix + (variant ? '-' + variant : '') + vSuffix;
       return POSTSCRIPT_EXCEPTIONS[ps] || ps;
     }
+
+
+    function detectInstalled() {
+      var deferred = $q.defer();
+      var id = 'font-detect-swf';
+      onFontDetectReady = function() {
+        var el = document.getElementById(id);
+        el.fonts().forEach(function(f) {
+          var variant = f.fontStyle.slice(0, 1).toUpperCase() + f.fontStyle.slice(1);
+          var id = f.fontName + ':' + variant;
+          var font = byId[id];
+          if (font) {
+            font.installed = true;
+          } else {
+            font = {
+              family: {
+                name: f.fontName
+              },
+              id: id,
+              name: f.fontName + ' ' + variant,
+              display_variant: getDisplayVariant(variant),
+              variant: variant,
+              loaded: true,
+              installed: true
+            };
+            all.push(font);
+            byId[id] = font;
+          }
+        });
+        deferred.resolve();
+      };
+      swfobject.embedSWF('detect/font-list.swf', id, '1', '1', '9.0.0', false, {
+        onReady: 'onFontDetectReady',
+        swfObjectId: id
+      }, {
+        allowScriptAccess: 'always',
+        menu: 'false'
+      }, {
+        id: id,
+        name: id
+      });
+      return deferred.promise;
+    }
+
+
 
     var callWebFontLoad = util.debounce(loadAllWebFonts, 500);
 
@@ -285,7 +345,10 @@
     }
 
     this.loadAll = function() {
-      return $q.all([loadSystemFonts(), loadGoogleFonts()]).then(sortAll).then(loadFinished);
+      return $q.all([loadSystemFonts(), loadGoogleFonts()])
+        .then(detectInstalled)
+        .then(sortAll)
+        .then(loadFinished);
     }
 
     this.queueWebFont = function(font) {

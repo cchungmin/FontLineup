@@ -71,6 +71,9 @@
                  ng-if="isGoogleFont(font)">
                 <img width="14" height="14" src="icons/google.svg" alt="Google Fonts">
               </a>
+              <div class="font-tag installed-font" ng-if="font.installed" title="Installed on your system.">
+                <img width="14" height="14" src="icons/star.svg" alt="Installed">
+              </div>
               <div class="font-tag windows-font" ng-if="font.available_windows" title="{{font.notes_windows}}">
                 <img width="14" height="14" src="icons/windows.svg" alt="Windows">
               </div>
@@ -89,21 +92,25 @@
         </fieldset>
         <fieldset>
           <span class="clickable inline-block platform-filter"
+                title="Fonts installed on your system."
+                ng-class="{active: installed}"
+                ng-click="installed = !installed">Installed</span>
+          <span class="clickable inline-block platform-filter"
                 title="Fonts available on Windows (hover over icon to see install rate if available)."
                 ng-class="{active: windows}"
-                ng-click="windows = !windows;">Windows</span>
+                ng-click="windows = !windows">Windows</span>
           <span class="clickable inline-block platform-filter"
                 title="Fonts available on Mac (hover over icon to see install rate if available)."
                 ng-class="{active: mac}"
-                ng-click="mac = !mac;">Mac</span>
+                ng-click="mac = !mac">Mac</span>
           <span class="clickable inline-block platform-filter"
                 title="Fonts available through the Google Fonts API"
                 ng-class="{active: google}"
-                ng-click="google = !google;">Google</span>
+                ng-click="google = !google">Google</span>
           <span class="clickable inline-block platform-filter"
                 title="&quot;Web safe&quot; fonts. For the purposes of this tool, this term is a proxy for fonts that have an install rate of over {{safeThreshold}}% on both Mac and Windows. However the only truly safe fonts are those like serif, sans-serif, etc. Fallbacks should always be used."
                 ng-class="{active: safe}"
-                ng-click="safe = !safe;">Safe</span>
+                ng-click="safe = !safe">Safe</span>
         </fieldset>
         <fieldset>
           <select ng-model="size" title="Font Size">
@@ -148,6 +155,8 @@
           <div class="selected-font-text" ng-style="getStyleForFont(font)" text-fit="text|nlbr"></div>
       </div>
     </article>
+    <div id="font-detect-swf"></div>
+    <script src="detect/swfobject.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.5.18/webfont.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.15/angular.min.js"></script>
     <!--<script src="webfont.js"></script>-->
