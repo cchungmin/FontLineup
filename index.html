@@ -94,7 +94,10 @@
           <span class="clickable inline-block platform-filter"
                 title="Fonts installed on your system."
                 ng-class="{active: installed}"
-                ng-click="installed = !installed">Installed</span>
+                ng-click="installed = !installed" ng-if="canDetectInstalled()">Installed</span>
+          <span class="clickable inline-block platform-filter"
+                title="Cannot detect fonts installed on your system (requires Flash)."
+                ng-if="!canDetectInstalled()">Installed</span>
           <span class="clickable inline-block platform-filter"
                 title="Fonts available on Windows (hover over icon to see install rate if available)."
                 ng-class="{active: windows}"

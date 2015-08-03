@@ -112,6 +112,7 @@
     var all = [];
     var byId = {};
     var queuedWebFonts = [];
+    var installedDetected;
 
     function setSystemFontInstall(font, platform) {
       var notes = [];
@@ -273,42 +274,48 @@
     function detectInstalled() {
       var deferred = $q.defer();
       var id = 'font-detect-swf';
-      onFontDetectReady = function() {
-        var el = document.getElementById(id);
-        el.fonts().forEach(function(f) {
-          var variant = f.fontStyle.slice(0, 1).toUpperCase() + f.fontStyle.slice(1);
-          var id = f.fontName + ':' + variant;
-          var font = byId[id];
-          if (font) {
-            font.installed = true;
-          } else {
-            font = {
-              family: {
-                name: f.fontName
-              },
-              id: id,
-              name: f.fontName + ' ' + variant,
-              display_variant: getDisplayVariant(variant),
-              variant: variant,
-              loaded: true,
-              installed: true
-            };
-            all.push(font);
-            byId[id] = font;
-          }
+      if (!swfobject.hasFlashPlayerVersion('9')) {
+        installedDetected = false;
+        deferred.resolve('No Flash Player');
+      } else {
+        onFontDetectReady = function() {
+          var el = document.getElementById(id);
+          el.fonts().forEach(function(f) {
+            var variant = f.fontStyle.slice(0, 1).toUpperCase() + f.fontStyle.slice(1);
+            var id = f.fontName + ':' + variant;
+            var font = byId[id];
+            if (font) {
+              font.installed = true;
+            } else {
+              font = {
+                family: {
+                  name: f.fontName
+                },
+                id: id,
+                name: f.fontName + ' ' + variant,
+                display_variant: getDisplayVariant(variant),
+                variant: variant,
+                loaded: true,
+                installed: true
+              };
+              all.push(font);
+              byId[id] = font;
+            }
+          });
+          installedDetected = true;
+          deferred.resolve();
+        };
+        swfobject.embedSWF('detect/font-list.swf', id, '1', '1', '9.0.0', false, {
+          onReady: 'onFontDetectReady',
+          swfObjectId: id
+        }, {
+          allowScriptAccess: 'always',
+          menu: 'false'
+        }, {
+          id: id,
+          name: id
         });
-        deferred.resolve();
-      };
-      swfobject.embedSWF('detect/font-list.swf', id, '1', '1', '9.0.0', false, {
-        onReady: 'onFontDetectReady',
-        swfObjectId: id
-      }, {
-        allowScriptAccess: 'always',
-        menu: 'false'
-      }, {
-        id: id,
-        name: id
-      });
+      }
       return deferred.promise;
     }
 
@@ -349,6 +356,10 @@
         .then(detectInstalled)
         .then(sortAll)
         .then(loadFinished);
+    }
+
+    this.canDetectInstalled = function() {
+      return installedDetected;
     }
 
     this.queueWebFont = function(font) {
