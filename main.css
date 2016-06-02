@@ -72,6 +72,10 @@ article {
   padding: 1px;
 }
 
+article {
+  overflow: auto;
+}
+
 /* -------------------------] Panel Left/Right [------------------------*/
 
 html.panel-left header,
@@ -504,6 +508,7 @@ input[type="search"] {
 
 .selected-font-text {
   margin: 10px;
+  line-height: 1.2;
 }
 
 .selected-font-name {
