@@ -95,10 +95,7 @@
 
     $scope.removeStarredFont = function(font) {
       font.starred = false;
-      var index = $scope.starredIds.indexOf(font.id);
-      if (index !== -1) {
-        $scope.starredIds.splice(index, 1);
-      }
+      util.removeFromArray($scope.starredIds, font.id);
     };
 
     $scope.addFont = function(font) {
@@ -456,6 +453,26 @@
       return str.replace(/\n/, '<br>');
     }
 
+    this.removeFromArray = function(arr, el) {
+      var index = this.indexOf(arr, el);
+      if (index !== -1) {
+        arr.splice(index, 1);
+      }
+    };
+
+    this.indexOf = function(arr, el) {
+      // jqLite doesn't have an indexOf. Why? Who knows...
+      if (arr.indexOf) {
+        return arr.indexOf(el);
+      }
+      for (var i = 0; i < arr.length; i++) {
+        if (arr[i] === el) {
+          return i;
+        }
+      }
+      return -1;
+    };
+
     this.alphanumericSort = function(a, b) {
       var aNorm = normalize(a);
       var bNorm = normalize(b);
@@ -674,6 +691,11 @@
           elements.push(el);
         }
 
+        this.unregister = function(el) {
+          util.removeFromArray(elements, el);
+          fit();
+        }
+
         this.fit = util.debounce(fit);
 
         angular.element($window).on('resize', util.debounce(fit, 500));
@@ -698,7 +720,7 @@
     }
   });
 
-  mod.directive('textFit', function() {
+  mod.directive('textFit', function($timeout) {
 
     return {
       restrict: 'A',
@@ -711,6 +733,9 @@
         scope.$watch('text', function(text) {
           element.html(text);
           textFitController.fit();
+        });
+        scope.$on('$destroy', function(text) {
+          textFitController.unregister(element[0]);
         });
       }
     }
@@ -755,6 +780,9 @@
     return {
       link: function(scope, element) {
         element.on('click', function(evt) {
+          evt.stopPropagation();
+        });
+        element.on('dblclick', function(evt) {
           evt.stopPropagation();
         });
       }
