@@ -67,14 +67,14 @@
                    ng-if="!font.starred"
                    ng-click="addStarredFont(font)"
                    no-click-bubble
-                   title="This font is not saved to your collection.">
+                   title="Click to save to your collection.">
                 <img width="14" height="14" src="icons/star-gray.svg" alt="Star">
               </div>
              <div class="font-tag starred-font"
                   ng-if="font.starred"
                   ng-click="removeStarredFont(font)"
                   no-click-bubble
-                  title="This font is saved to your collection.">
+                  title="Saved to your collection.">
                 <img width="14" height="14" src="icons/star.svg" alt="Star">
               </div>
               <a href="https://www.google.com/fonts#UsePlace:use/Collection:{{font.family.name}}"
