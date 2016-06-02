@@ -10,22 +10,40 @@
       $scope.$digest();
     }
 
+    function fontIsSafe(font) {
+      return font.family.install_mac > $scope.safeThreshold &&
+             font.family.install_windows > $scope.safeThreshold;
+    }
+
+    function setStarredFonts() {
+      var map = {};
+      $scope.starredIds.forEach(function(s) {
+        map[s] = true;
+      });
+      $scope.fonts.forEach(function(font) {
+        if (map[font.id]) {
+          font.starred = true;
+        }
+      });
+    }
+
     util.merge($scope, Fonts);
 
     Storage.setupAttribute($scope, 'text', 'Sample Text');
-    Storage.setupAttribute($scope, 'size', 'auto');
     Storage.setupAttribute($scope, 'theme', 'dark');
     Storage.setupAttribute($scope, 'selected', []);
     Storage.setupAttribute($scope, 'panelSide', 'right');
     Storage.setupAttribute($scope, 'panelClosed', false);
     Storage.setupAttribute($scope, 'textInList', false);
     Storage.setupAttribute($scope, 'search', '');
+    Storage.setupAttribute($scope, 'starredIds', []);
 
-    Storage.setupAttribute($scope, 'mac', true);
-    Storage.setupAttribute($scope, 'windows', true);
+    Storage.setupAttribute($scope, 'starred',   false);
     Storage.setupAttribute($scope, 'installed', true);
-    Storage.setupAttribute($scope, 'google', true);
-    Storage.setupAttribute($scope, 'safe', true);
+    Storage.setupAttribute($scope, 'windows',   false);
+    Storage.setupAttribute($scope, 'mac',       false);
+    Storage.setupAttribute($scope, 'google',    false);
+    Storage.setupAttribute($scope, 'safe',      false);
 
     $scope.fontListFilter = function(font) {
       if ($scope.search) {
@@ -39,7 +57,7 @@
           }
         }
       }
-      if ($scope.safe && font.family.install_mac > $scope.safeThreshold && font.family.install_windows > $scope.safeThreshold) {
+      if ($scope.safe && fontIsSafe(font)) {
         return true;
       } else if (font.installed && $scope.installed) {
         return true;
@@ -49,12 +67,44 @@
         return true;
       } else if (Fonts.isGoogleFont(font) && $scope.google) {
         return true;
+      } else if (font.starred && $scope.starred) {
+        return true;
       }
       return false;
     };
 
+    $scope.setTab = function(name) {
+      $scope.mac       = false;
+      $scope.windows   = false;
+      $scope.installed = false;
+      $scope.starred   = false;
+      $scope.google    = false;
+      $scope.safe      = false;
+
+      $scope[name] = true;
+    };
+
+    $scope.getSize = function() {
+      return $scope.size === 'auto' ? 'auto' : $scope.size + 'px';
+    };
+
+    $scope.addStarredFont = function(font) {
+      font.starred = true;
+      $scope.starredIds.push(font.id);
+    };
+
+    $scope.removeStarredFont = function(font) {
+      font.starred = false;
+      var index = $scope.starredIds.indexOf(font.id);
+      if (index !== -1) {
+        $scope.starredIds.splice(index, 1);
+      }
+    };
+
     $scope.addFont = function(font) {
-      $scope.selected.push(font.id);
+      if ($scope.selected.indexOf(font.id) === -1) {
+        $scope.selected.push(font.id);
+      }
     };
 
     $scope.removeFont = function(index) {
@@ -92,6 +142,7 @@
         Fonts.queueWebFont(Fonts.getById(id));
       });
       $scope.fonts = Fonts.getAll();
+      setStarredFonts();
     });
 
   });
@@ -538,7 +589,7 @@
     };
   });
 
-  mod.directive('textFitContainer', function($window, util) {
+  mod.directive('textFitContainer', function($window, $document, Storage, util) {
 
     var MIN_SIZE = 6;
 
@@ -556,19 +607,50 @@
         }
 
         function getSize() {
-          fontSize = parseInt($window.getComputedStyle(elements[0]).fontSize, 10);
+          return parseInt($window.getComputedStyle(elements[0]).fontSize, 10);
+        }
+
+        function resetSize() {
+          $scope.size = 'auto';
+          fit();
+        }
+
+        function incrementSize(amt, shift) {
+          var size = $scope.size, mult, shiftMult;
+
+          if (!elements.length || !size) {
+            return;
+          }
+
+          if (size === 'auto') {
+            size = getSize();
+          }
+
+          shiftMult = shift ? 4 : 1;
+          if (size <= 16) {
+            mult = 1;
+          } else if (size <= 32) {
+            mult = 2;
+          } else if (size <= 72) {
+            mult = 4;
+          } else {
+            mult = 8;
+          }
+          $scope.size = Math.max(2, size + (amt * mult * shiftMult));
+          fit();
         }
 
         function fit() {
           if (!elements.length) {
             return;
           }
+
           if ($scope.size != 'auto') {
             setSize($scope.size);
             return;
           }
           setSize();
-          getSize();
+          fontSize = getSize();
           while (canContinue()) {
             fontSize--;
             angular.forEach(elements, function(el) {
@@ -587,10 +669,24 @@
 
         this.fit = util.debounce(fit);
 
-        $scope.$watch('size', fit);
-
         angular.element($window).on('resize', util.debounce(fit, 500));
         angular.element($window).on('orientationchange', util.debounce(fit, 500));
+
+        Storage.setupAttribute($scope, 'size', 'auto');
+
+        $document.on('keydown', function(evt) {
+          if (evt.keyCode === 48) {
+            resetSize();
+            $scope.$apply();
+          } else if (evt.keyCode === 187) {
+            incrementSize(1, evt.shiftKey);
+            $scope.$apply();
+          } else if (evt.keyCode === 189) {
+            incrementSize(-1, evt.shiftKey);
+            $scope.$apply();
+          }
+        });
+
       }
     }
   });
@@ -609,6 +705,41 @@
           element.html(text);
           textFitController.fit();
         });
+      }
+    }
+  });
+
+  mod.directive('dblclickEditing', function() {
+
+    return {
+      restrict: 'A',
+      link: function(scope, element, attr) {
+
+        var container = element.parent();
+
+        element.on('blur', function(evt) {
+          scope.editing = false;
+          scope.$apply();
+        });
+
+        element.on('keydown', function(evt) {
+          if (evt.keyCode === 27) {
+            scope.editing = false;
+            scope.$apply();
+          }
+        });
+
+        container.on('click', function(evt) {
+          evt.stopPropagation();
+        });
+
+        container.on('dblclick', function(evt) {
+          scope.editing = true;
+          evt.stopPropagation();
+          scope.$apply();
+          element[0].select();
+        });
+
       }
     }
   });

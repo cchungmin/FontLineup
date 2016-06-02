@@ -30,9 +30,6 @@
           </div>
         </div>
         <h1>Font Lineup</h1>
-        <fieldset class="sample-text-field">
-          <textarea id="text" class="text" ng-model="text" placeholder="Sample Text"></textarea>
-        </fieldset>
         <fieldset class="font-list-field flex-shrink flex-grow">
           <div>
             <span class="inline-block">
@@ -64,21 +61,35 @@
                  on-scroll-enter="queueWebFont(font)"
                  scroll-padding="50"
                  ng-click="addFont(font)">
+              <div class="font-tag unstarred-font"
+                   ng-if="!font.starred"
+                   ng-click="addStarredFont(font)"
+                   no-click-bubble
+                   title="This font is not saved to your collection.">
+                <img width="14" height="14" src="icons/star-gray.svg" alt="Star">
+              </div>
+             <div class="font-tag starred-font"
+                  ng-if="font.starred"
+                  ng-click="removeStarredFont(font)"
+                  no-click-bubble
+                  title="This font is saved to your collection.">
+                <img width="14" height="14" src="icons/star.svg" alt="Star">
+              </div>
               <a href="https://www.google.com/fonts#UsePlace:use/Collection:{{font.family.name}}"
                  target="_blank"
                  class="font-tag google-font"
                  title="Google Fonts API (click to view)"
                  ng-if="isGoogleFont(font)">
-                <img width="14" height="14" src="icons/google.svg" alt="Google Fonts">
+                <img width="13" height="13" src="icons/google.svg" alt="Google Fonts">
               </a>
               <div class="font-tag installed-font" ng-if="font.installed" title="Installed on your system.">
-                <img width="14" height="14" src="icons/star.svg" alt="Installed">
+                <img width="14" height="14" src="icons/installed.svg" alt="Installed">
               </div>
               <div class="font-tag windows-font" ng-if="font.available_windows" title="{{font.notes_windows}}">
                 <img width="14" height="14" src="icons/windows.svg" alt="Windows">
               </div>
               <div class="font-tag mac-font" ng-if="font.available_mac" title="{{font.notes_mac}}">
-                <img width="14" height="14" src="icons/mac.svg" alt="Mac">
+                <img width="16" height="14" src="icons/mac.svg" alt="Mac">
               </div>
               <div class="font-tag font-error" ng-if="font.error" title="Font Failed to Load">E</div>
               <div class="font-loading-bar"></div>
@@ -92,61 +103,46 @@
         </fieldset>
         <fieldset>
           <span class="clickable inline-block platform-filter"
+                title="Starred fonts."
+                ng-class="{active: starred}"
+                ng-click="setTab('starred')">Starred</span>
+          <span class="clickable inline-block platform-filter"
                 title="Fonts installed on your system."
                 ng-class="{active: installed}"
-                ng-click="installed = !installed" ng-if="canDetectInstalled()">Installed</span>
+                ng-click="setTab('installed')" ng-show="canDetectInstalled()">Installed</span>
           <span class="clickable inline-block platform-filter"
                 title="Cannot detect fonts installed on your system (requires Flash)."
-                ng-if="!canDetectInstalled()">Installed</span>
+                ng-show="!canDetectInstalled()">Installed</span>
           <span class="clickable inline-block platform-filter"
-                title="Fonts available on Windows (hover over icon to see install rate if available)."
+                title="Fonts available on Windows (hover over icon to see install base if available)."
                 ng-class="{active: windows}"
-                ng-click="windows = !windows">Windows</span>
+                ng-click="setTab('windows')">Windows</span>
           <span class="clickable inline-block platform-filter"
-                title="Fonts available on Mac (hover over icon to see install rate if available)."
+                title="Fonts available on Mac (hover over icon to see install base if available)."
                 ng-class="{active: mac}"
-                ng-click="mac = !mac">Mac</span>
+                ng-click="setTab('mac')">Mac</span>
           <span class="clickable inline-block platform-filter"
                 title="Fonts available through the Google Fonts API"
                 ng-class="{active: google}"
-                ng-click="google = !google">Google</span>
+                ng-click="setTab('google')">Google</span>
           <span class="clickable inline-block platform-filter"
-                title="&quot;Web safe&quot; fonts. For the purposes of this tool, this term is a proxy for fonts that have an install rate of over {{safeThreshold}}% on both Mac and Windows. However the only truly safe fonts are those like serif, sans-serif, etc. Fallbacks should always be used."
+                title="&quot;Web safe&quot; fonts. For the purposes of this tool, this term is a proxy for fonts that have an install base of over {{safeThreshold}}% on both Mac and Windows. However the only truly safe fonts are those like serif, sans-serif, etc. Fallbacks should always be used."
                 ng-class="{active: safe}"
-                ng-click="safe = !safe">Safe</span>
+                ng-click="setTab('safe')">Safe</span>
         </fieldset>
-        <fieldset>
-          <select ng-model="size" title="Font Size">
-            <option value="auto">Auto</option>
-            <option value="6">6px</option>
-            <option value="8">8px</option>
-            <option value="9">9px</option>
-            <option value="10">10px</option>
-            <option value="11">11px</option>
-            <option value="12">12px</option>
-            <option value="14">14px</option>
-            <option value="16">16px</option>
-            <option value="18">18px</option>
-            <option value="20">20px</option>
-            <option value="24">24px</option>
-            <option value="28">28px</option>
-            <option value="32">32px</option>
-            <option value="36">36px</option>
-            <option value="40">40px</option>
-            <option value="44">44px</option>
-            <option value="48">48px</option>
-            <option value="56">56px</option>
-            <option value="64">64px</option>
-            <option value="72">72px</option>
-            <option value="96">96px</option>
-            <option value="144">144px</option>
-            <option value="192">192px</option>
-          </select>
+        <fieldset class="font-size">
+          Font Size: {{getSize()}}
         </fieldset>
       </div>
     </header>
     <article class="content flex-gutter" text-fit-container>
       <div class="selected-font flex-grow" ng-repeat="font in selected | getFont track by $index">
+        <textarea class="selected-font-text-input"
+            ng-model="$parent.text"
+            ng-show="editing"
+            dblclick-editing
+            spellcheck="false"
+            placeholder="Sample Text"></textarea>
           <div class="selected-font-remove clickable" ng-click="removeFont($index)">&times;</div>
           <div class="selected-font-name">
             <a target="_blank"
@@ -155,7 +151,7 @@
                ng-if="isGoogleFont(font)">{{font.name}}</a>
             <span ng-if="!isGoogleFont(font)">{{font.name}}</span>
           </div>
-          <div class="selected-font-text" ng-style="getStyleForFont(font)" text-fit="text|nlbr"></div>
+          <div class="selected-font-text" ng-style="getStyleForFont(font)" ng-show="!editing" text-fit="text|nlbr"></div>
       </div>
     </article>
     <div id="font-detect-swf"></div>

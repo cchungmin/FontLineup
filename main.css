@@ -76,13 +76,13 @@ article {
 
 html.panel-left header,
 html.panel-right header {
-  width: 30%;
+  width: 40%;
   height: 100%;
 }
 
 html.panel-left article,
 html.panel-right article {
-  width: 70%;
+  width: 60%;
   height: 100%;
 }
 
@@ -123,11 +123,6 @@ html.panel-top article {
 html.panel-top h1,
 html.panel-bottom h1 {
   display: none;
-}
-
-html.panel-top .sample-text-field,
-html.panel-bottom .sample-text-field {
-  margin-left: 60px;
 }
 
 html.panel-top .flex-gutter,
@@ -398,6 +393,11 @@ input[type="search"] {
   opacity: 1;
 }
 
+.font-size {
+  margin-top: 1em;
+  font-weight: bold;
+}
+
 /* -------------------------] Font List [------------------------*/
 
 .font-list-field {
@@ -423,7 +423,7 @@ input[type="search"] {
 }
 
 .font-name {
-  font-size: 16px;
+  font-size: 20px;
   max-width: 20em;
   white-space: nowrap;
   overflow: hidden;
@@ -436,7 +436,8 @@ input[type="search"] {
   height: 15px;
   border-radius: 100%;
   text-align: center;
-  margin: 1px 0 0 3px;
+  margin-right: 4px;
+  margin-top: 2px;
   font-size: 10px;
   line-height: 14px;
   font-weight: bold;
@@ -511,6 +512,16 @@ input[type="search"] {
   left: 5px;
   font-size: 10px;
   color: #666;
+}
+
+.selected-font-text-input {
+  background-color: rgba(255,255,255,.1);
+  border: none;
+  width: 90%;
+  max-width: 400px;
+  padding: 1em;
+  font-size: 14px;
+  color: #fff;
 }
 
 /* -------------------------] Dark Theme [------------------------*/

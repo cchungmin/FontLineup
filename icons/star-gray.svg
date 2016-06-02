@@ -5,8 +5,6 @@
     <desc>Created with Sketch.</desc>
     <defs></defs>
     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="star" sketch:type="MSLayerGroup" transform="translate(0.000000, -12.000000)" fill="#F2E955">
-            <path d="M335.11,172.821 L256,12.53 L176.892,172.821 L0,198.525 L128,323.294 L97.784,499.47 L256,416.291 L414.216,499.47 L383.999,323.294 L512,198.525 L335.11,172.821 Z" id="Shape" sketch:type="MSShapeGroup"></path>
-        </g>
+        <path d="M256,0.53 L176.892,160.821 L0,186.525 L128,311.294 L97.784,487.47 L256,404.291 L414.216,487.47 L383.999,311.294 L512,186.525 L335.11,160.821 L256,0.53 Z" id="Shape" fill="#575757" sketch:type="MSShapeGroup"></path>
     </g>
 </svg>
