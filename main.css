@@ -527,12 +527,12 @@ input[type="search"] {
 /* -------------------------] Dark Theme [------------------------*/
 
 body.dark {
-  background-color: #17130b;
+  background-color: #1b1b1b;
   color: #fff;
 }
 
 body.dark .selected-font {
-  background-color: #2b2c35;
+  background-color: #2a292a;
 }
 
 body.dark .selected-font-remove {
