@@ -607,7 +607,7 @@
         }
 
         function getSize() {
-          return parseInt($window.getComputedStyle(elements[0]).fontSize, 10);
+          return parseInt($window.getComputedStyle(elements[0]).fontSize, 10) || 10;
         }
 
         function resetSize() {
