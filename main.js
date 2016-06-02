@@ -647,6 +647,7 @@
 
           if ($scope.size != 'auto') {
             setSize($scope.size);
+            checkBounds();
             return;
           }
           setSize();
@@ -657,6 +658,12 @@
               el.style.fontSize = fontSize + 'px';
             });
           }
+          checkBounds();
+        }
+
+        function checkBounds() {
+          var overflowing = container.scrollHeight > container.clientHeight;
+          $element.toggleClass('flex-gutter', !overflowing);
         }
 
         function canContinue() {

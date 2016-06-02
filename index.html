@@ -8,8 +8,7 @@
   </head>
   <body ng-cloak ng-class="{dark: theme == 'dark'}">
     <header ng-click="panelClosed = false">
-      <h1>Font Lineup</h1>
-      <div class="em-padding flex-gutter full-height">
+      <div class="flex-gutter full-height">
         <div class="side-panel">
 
           <table class="move-buttons">
@@ -30,6 +29,9 @@
             <img width="20" height="20" class="centered icon" ng-src="icons/{{theme}}-theme.svg">
           </div>
         </div>
+        <fieldset>
+          <h1>Font Lineup</h1>
+        </fieldset>
         <fieldset class="font-list-field flex-shrink flex-grow">
           <div>
             <span class="inline-block">
@@ -136,7 +138,7 @@
       </div>
     </header>
     <article class="content flex-gutter" text-fit-container>
-      <div class="selected-font flex-grow" ng-repeat="font in selected | getFont track by $index">
+      <div class="selected-font exact-center flex-grow" ng-repeat="font in selected | getFont track by $index">
         <textarea class="selected-font-text-input"
             ng-model="$parent.text"
             ng-show="editing"

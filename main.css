@@ -218,10 +218,6 @@ html.left .flex-gutter {
   height: 100%;
 }
 
-.em-padding {
-  padding: 1.5em;
-}
-
 .tabs {
   font-size: 14px;
   vertical-align: middle;
@@ -275,10 +271,12 @@ header {
   color: #97a5b0;
   text-align: center;
   transition: background-color 50ms linear 100ms;
+  padding: 1em 0 0.5em 1.5em;
 }
 
 header h1 {
-  font-size: 30px;
+  font-size: 18px;
+  font-weight: bold;
   font-family: Roboto Slab, sans-serif;
   margin-bottom: .5em;
 }
@@ -410,7 +408,7 @@ input[type="search"] {
 
 .font-list {
   position: absolute;
-  top: 25px;
+  top: 30px;
   right: 0;
   bottom: 0;
   left: 0;
@@ -508,7 +506,7 @@ input[type="search"] {
 
 .selected-font-text {
   margin: 10px;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 .selected-font-name {
