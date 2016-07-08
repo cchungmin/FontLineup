@@ -27,6 +27,15 @@
       });
     }
 
+    function setFontStates(bool) {
+      $scope.mac       = bool;
+      $scope.windows   = bool;
+      $scope.installed = bool;
+      $scope.starred   = bool;
+      $scope.google    = bool;
+      $scope.safe      = bool;
+    }
+
     util.merge($scope, Fonts);
 
     Storage.setupAttribute($scope, 'text', 'Sample Text');
@@ -74,13 +83,7 @@
     };
 
     $scope.setTab = function(name) {
-      $scope.mac       = false;
-      $scope.windows   = false;
-      $scope.installed = false;
-      $scope.starred   = false;
-      $scope.google    = false;
-      $scope.safe      = false;
-
+      setFontStates(false);
       $scope[name] = true;
     };
 
@@ -139,6 +142,7 @@
         Fonts.queueWebFont(Fonts.getById(id));
       });
       $scope.fonts = Fonts.getAll();
+      setFontStates(true);
       setStarredFonts();
     });
 
